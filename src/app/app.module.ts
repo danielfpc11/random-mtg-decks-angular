@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppI18nModule } from './app-i18n.module';
 import { SharedModule } from './shared';
+import { GameAssignmentModule } from './modules';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { SharedModule } from './shared';
     BrowserModule,
     AppRoutingModule,
     AppI18nModule,
-    SharedModule
+    HttpClientModule,
+    SharedModule,
+    GameAssignmentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
