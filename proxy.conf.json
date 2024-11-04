@@ -1,0 +1,10 @@
+{
+  "/moxfield-api": {
+    "target": "https://api2.moxfield.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/moxfield-api": "/v2/decks/search"
+    }
+  }
+}
