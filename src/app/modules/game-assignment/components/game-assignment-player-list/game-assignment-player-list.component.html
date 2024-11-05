@@ -1,0 +1,23 @@
+<ng-container *ngIf="players">
+  <div class="player-list">
+    <div class="player-item" *ngFor="let player of players">
+      <p class="player-name">{{ player.name }}</p>
+      <div class="action-buttons">
+        <ng-container [ngTemplateOutlet]='actionButtons' [ngTemplateOutletContext]="{player: player}"/>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #actionButtons let-player='player'>
+  <button (click)="copyPublicUrl(player.deck.publicUrl)"
+          type="button"
+          class="action-button copy-button">
+    📋 {{ 'gameAssignment.playerList.copy' | translate }}
+  </button>
+  <button (click)="deletePlayer(player.name)"
+          type="button"
+          class="action-button delete-button">
+    🗑️ {{ 'gameAssignment.playerList.delete' | translate }}
+  </button>
+</ng-template>

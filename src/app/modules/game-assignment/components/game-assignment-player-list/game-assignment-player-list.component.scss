@@ -1,0 +1,68 @@
+.player-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.player-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.player-name {
+  width: 75%;
+  margin: 0;
+  padding: 0.5rem;
+  border: 0.125rem solid gray;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.action-buttons {
+  width: 25%;
+}
+
+.action-button {
+  margin: 0.25rem;
+  padding: 0.5rem;
+  border: 0.125rem solid;
+  border-radius: 0.5rem;
+}
+
+.copy-button {
+  border-color: #a8d4e8;
+  background-color: #a8d4e8;
+}
+
+.delete-button {
+  color: white;
+  border-color: #d15555;
+  background-color: #d15555;
+}
+
+@media (max-width: 790px) {
+
+  .player-item {
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    border: 0.125rem solid gray;
+    border-radius: 0.5rem;
+  }
+
+  .player-name {
+    width: 100%;
+    border: none;
+  }
+
+  .action-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .action-button {
+    width: 49.5%;
+  }
+
+}
