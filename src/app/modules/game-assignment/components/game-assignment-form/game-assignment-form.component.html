@@ -1,0 +1,22 @@
+<ng-container *ngIf="decks$ | async; let decks">
+  <form [formGroup]="playerForm" (ngSubmit)="addPlayer(getRandomDeck(decks))">
+    <input id="name" type="text" formControlName="name">
+    <div *ngIf="getNameFormControl()?.invalid && (getNameFormControl()?.dirty || getNameFormControl()?.touched)">
+      <div *ngIf="getNameFormControl()?.errors?.['repeatedPlayerName']">
+        {{ 'gameAssignment.form.error.repeatedPlayerName' | translate }}
+      </div>
+      <div *ngIf="getNameFormControl()?.errors?.['required']">
+        {{ 'gameAssignment.form.error.requiredPlayerName' | translate }}
+      </div>
+    </div>
+
+    <button type="submit">{{ 'gameAssignment.form.add' | translate }}</button>
+    <a [routerLink]="['/history']">{{ 'gameAssignment.form.history' | translate }}</a>
+  </form>
+
+  <game-assignment-player-list></game-assignment-player-list>
+
+  <button (click)="changePlayersDecks(decks)">
+    {{ 'gameAssignment.form.changePlayersDecks' | translate }}
+  </button>
+</ng-container>
