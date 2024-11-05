@@ -1,5 +1,14 @@
 {
   "gameAssignment": {
+    "form": {
+      "add": "Add",
+      "history": "History",
+      "changePlayersDecks": "Change Players Decks",
+      "error": {
+        "repeatedPlayerName": "The player name is repeated.",
+        "requiredPlayerName": "The player name is required."
+      }
+    },
     "playerList": {
       "copy": "Copy",
       "delete": "Delete"

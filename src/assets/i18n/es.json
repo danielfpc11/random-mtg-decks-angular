@@ -1,5 +1,14 @@
 {
   "gameAssignment": {
+    "form": {
+      "add": "Añadir",
+      "history": "Historial",
+      "changePlayersDecks": "Cambiar mazos",
+      "error": {
+        "repeatedPlayerName": "El nombre del Jugador está repetido.",
+        "requiredPlayerName": "El nombre de Jugador es requerido."
+      }
+    },
     "playerList": {
       "copy": "Copiar",
       "delete": "Borrar"
