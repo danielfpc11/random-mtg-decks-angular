@@ -22,7 +22,7 @@ export class GameAssignmentPlayerListComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.subscription.add(this.gameService
                               .getCurrentGame()
-                              .pipe(tap((game: Game) => this.game = game))
+                              .pipe(tap((game: Game): Game => this.game = game))
                               .subscribe());
   }
 
