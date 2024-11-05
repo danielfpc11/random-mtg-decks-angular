@@ -1,6 +1,6 @@
-<ng-container *ngIf="players">
+<ng-container *ngIf="game">
   <div class="player-list">
-    <div class="player-item" *ngFor="let player of players">
+    <div class="player-item" *ngFor="let player of game.players">
       <p class="player-name">{{ player.name }}</p>
       <div class="action-buttons">
         <ng-container [ngTemplateOutlet]='actionButtons' [ngTemplateOutletContext]="{player: player}"/>
