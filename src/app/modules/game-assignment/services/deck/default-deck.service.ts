@@ -3,7 +3,8 @@ import { DeckService } from './deck.service';
 import { forkJoin, map, mergeMap, Observable } from 'rxjs';
 import { Deck, Page } from '../../models';
 import { PageService } from '../page';
-import { COMMANDER_CATEGORY, FIRST_PAGE_INDEX, PAGE_SIZE, ZERO_NUMBER } from '../../../../shared';
+import { ZERO_NUMBER } from '../../../../shared';
+import { COMMANDER_CATEGORY, FIRST_PAGE_INDEX, PAGE_SIZE } from '../../constants';
 
 @Injectable({
   providedIn: 'root'
