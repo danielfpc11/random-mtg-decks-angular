@@ -2,8 +2,9 @@
   "gameAssignment": {
     "form": {
       "add": "Añadir",
-      "history": "Historial",
       "changePlayersDecks": "Cambiar mazos",
+      "history": "Historial",
+      "saveGame": "Guardar Partida",
       "error": {
         "repeatedPlayerName": "El nombre del Jugador está repetido.",
         "requiredPlayerName": "El nombre de Jugador es requerido."

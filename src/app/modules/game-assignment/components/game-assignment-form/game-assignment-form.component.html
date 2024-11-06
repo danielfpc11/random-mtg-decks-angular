@@ -16,7 +16,10 @@
 
   <game-assignment-player-list></game-assignment-player-list>
 
-  <button (click)="changePlayersDecks(decks)">
+  <button [disabled]="isChangePlayersDecksDisabled" (click)="changePlayersDecks(decks)">
     {{ 'gameAssignment.form.changePlayersDecks' | translate }}
+  </button>
+  <button [disabled]="isChangePlayersDecksDisabled" (click)="saveGame()">
+    {{ 'gameAssignment.form.saveGame' | translate }}
   </button>
 </ng-container>
