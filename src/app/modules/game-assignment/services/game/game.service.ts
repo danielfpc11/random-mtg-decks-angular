@@ -7,4 +7,6 @@ export abstract class GameService {
 
   public abstract setCurrentGame(game: Game): void;
 
+  public abstract save(game: Game): Observable<Game>;
+
 }

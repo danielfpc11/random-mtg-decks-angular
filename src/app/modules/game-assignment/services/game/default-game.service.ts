@@ -19,4 +19,9 @@ export class DefaultGameService implements GameService {
     this.currentGameSubject.next(game);
   }
 
+  public save(game: Game): Observable<Game> {
+    localStorage.setItem(GameUtils.getGameId(game.id!), JSON.stringify(game));
+    return of(game);
+  }
+
 }
