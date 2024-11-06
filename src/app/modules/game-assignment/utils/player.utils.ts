@@ -1,4 +1,5 @@
 import { Deck, Player } from '../models';
+import { DeckUtils } from './deck.utils';
 
 export class PlayerUtils {
 
@@ -12,6 +13,13 @@ export class PlayerUtils {
 
   public static getPlayersNames(players: Player[]): string[] {
     return players.map((player: Player): string => player.name);
+  }
+
+  public static changePlayersDecks(players: Player[], decks: Deck[]): void {
+    players.forEach((player: Player): void => {
+      player.deck = DeckUtils.createEmptyDeck();
+      player.deck = DeckUtils.getRandomDeck(players, decks);
+    });
   }
 
 }
