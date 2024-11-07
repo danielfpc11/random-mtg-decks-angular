@@ -1,0 +1,62 @@
+main {
+  width: 60%;
+  min-height: calc(100vh - 18rem);
+  margin: 5rem auto;
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  background-color: #070707;
+}
+
+h1 {
+  color: white;
+  font-size: 4rem;
+}
+
+form {
+  display: flex;
+  margin-top: 1rem;
+}
+
+#name-form-control {
+  width: 60%;
+}
+
+#name-form-control > * {
+  display: block;
+  color: white;
+}
+
+#name-label {
+  font-size: 2rem;
+}
+
+#name {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  background-color: #222222;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.action-buttons {
+  width: 40%;
+  margin-left: 2rem;
+  display: flex;
+  align-items: end;
+}
+
+.action-button {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.add-button {
+  color: white;
+  background-color: #e90000;
+}

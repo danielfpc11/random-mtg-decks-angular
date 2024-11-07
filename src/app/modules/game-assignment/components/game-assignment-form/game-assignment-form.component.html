@@ -1,3 +1,35 @@
+<main>
+  <ng-container *ngIf="decks$ | async; let decks">
+    <h1>{{ 'gameAssignment.form.createGame' | translate }}</h1>
+    <form [formGroup]="playerForm" (ngSubmit)="addPlayer(getRandomDeck(decks))">
+      <div id="name-form-control">
+        <label id="name-label" for="name">
+          {{ 'gameAssignment.form.playerName' | translate }}
+        </label>
+        <input id="name"
+               type="text"
+               formControlName="name"
+               placeholder="{{ 'gameAssignment.form.playerNamePlaceholder' | translate }}">
+      </div>
+      <div class="action-buttons">
+        <ng-container [ngTemplateOutlet]="actionButtons" [ngTemplateOutletContext]="{decks: decks}"></ng-container>
+      </div>
+    </form>
+  </ng-container>
+</main>
+
+<ng-template #actionButtons let-decks='decks'>
+  <button type="submit" class="action-button add-button">
+    {{ 'gameAssignment.form.add' | translate }}
+  </button>
+  <button [disabled]="isChangePlayersDecksDisabled"
+          (click)="changePlayersDecks(decks)"
+          class="action-button change-players-decks-button">
+    {{ 'gameAssignment.form.changePlayersDecks' | translate }}
+  </button>
+</ng-template>
+
+<!--
 <ng-container *ngIf="decks$ | async; let decks">
   <form [formGroup]="playerForm" (ngSubmit)="addPlayer(getRandomDeck(decks))">
     <div class="name-form-control">
@@ -15,16 +47,13 @@
 
   <game-assignment-player-list></game-assignment-player-list>
 
-  <button [disabled]="isChangePlayersDecksDisabled" (click)="changePlayersDecks(decks)">
-    {{ 'gameAssignment.form.changePlayersDecks' | translate }}
-  </button>
   <button [disabled]="isChangePlayersDecksDisabled" (click)="saveGame()">
     {{ 'gameAssignment.form.saveGame' | translate }}
   </button>
 </ng-container>
 
 
-<!--<ng-container [ngTemplateOutlet]="formErrorMessages"></ng-container>-->
+<ng-container [ngTemplateOutlet]="formErrorMessages"></ng-container>
 
 <ng-template #formErrorMessages>
   <div *ngIf="getNameFormControl()?.invalid && (getNameFormControl()?.dirty || getNameFormControl()?.touched)">
@@ -36,3 +65,5 @@
     </div>
   </div>
 </ng-template>
+
+-->

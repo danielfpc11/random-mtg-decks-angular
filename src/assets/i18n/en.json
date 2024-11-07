@@ -2,8 +2,11 @@
    "gameAssignment": {
     "form": {
       "add": "Add",
-      "changePlayersDecks": "Change Players Decks",
+      "changePlayersDecks": "Change Decks",
+      "createGame": "Create Game",
       "history": "History",
+      "playerName": "Player Name",
+      "playerNamePlaceholder": "Enter player name",
       "saveGame": "Save Game",
       "error": {
         "repeatedPlayerName": "The player name is repeated.",

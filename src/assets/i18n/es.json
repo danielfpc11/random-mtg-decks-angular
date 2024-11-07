@@ -3,7 +3,10 @@
     "form": {
       "add": "Añadir",
       "changePlayersDecks": "Cambiar mazos",
+      "createGame": "Crear Partida",
       "history": "Historial",
+      "playerName": "Nombre del Jugador",
+      "playerNamePlaceholder": "Introduce el nombre del jugador",
       "saveGame": "Guardar Partida",
       "error": {
         "repeatedPlayerName": "El nombre del Jugador está repetido.",
