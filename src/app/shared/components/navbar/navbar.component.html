@@ -1,1 +1,9 @@
-<p>navbar works!</p>
+<nav>
+  <div id="brand-container" class="container">
+    <a [routerLink]="['/home']" id="brand">{{ 'navbar.brand' | translate }}</a>
+  </div>
+  <div id="navbar-links-container" class="container">
+    <a [routerLink]="['/create-game']" class="navbar-link">{{ 'navbar.createGame' | translate }}</a>
+    <a [routerLink]="['/saved-games']" class="navbar-link">{{ 'navbar.savedGames' | translate }}</a>
+  </div>
+</nav>
