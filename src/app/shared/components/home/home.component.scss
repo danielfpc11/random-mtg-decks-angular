@@ -1,0 +1,41 @@
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 5rem);
+}
+
+#create-game-link {
+  display: block;
+  text-decoration: none;
+
+  &:hover #create-game-message {
+    display: block;
+  }
+
+  &:hover #mtg-logo {
+    animation: none;
+    cursor: pointer;
+  }
+}
+
+#create-game-message {
+  display: none;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.75rem;
+  color: #e90000;
+}
+
+#mtg-logo {
+  animation: breathingColor 4s ease-in-out infinite;
+}
+
+@keyframes breathingColor {
+  0%, 100% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(30deg);
+  }
+}
