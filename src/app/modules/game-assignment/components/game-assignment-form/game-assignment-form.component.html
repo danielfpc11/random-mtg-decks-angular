@@ -1,17 +1,16 @@
 <ng-container *ngIf="decks$ | async; let decks">
   <form [formGroup]="playerForm" (ngSubmit)="addPlayer(getRandomDeck(decks))">
-    <input id="name" type="text" formControlName="name">
-    <div *ngIf="getNameFormControl()?.invalid && (getNameFormControl()?.dirty || getNameFormControl()?.touched)">
-      <div *ngIf="getNameFormControl()?.errors?.['repeatedPlayerName']">
-        {{ 'gameAssignment.form.error.repeatedPlayerName' | translate }}
-      </div>
-      <div *ngIf="getNameFormControl()?.errors?.['required']">
-        {{ 'gameAssignment.form.error.requiredPlayerName' | translate }}
-      </div>
+    <div class="name-form-control">
+      <input id="name" type="text" formControlName="name">
     </div>
-
-    <button type="submit">{{ 'gameAssignment.form.add' | translate }}</button>
-    <a [routerLink]="['/history']">{{ 'gameAssignment.form.history' | translate }}</a>
+    <div class="action-buttons">
+      <button type="submit" class="action-button add-button">
+        {{ 'gameAssignment.form.add' | translate }}
+      </button>
+      <a [routerLink]="['/history']" class="action-button history-button">
+        {{ 'gameAssignment.form.history' | translate }}
+      </a>
+    </div>
   </form>
 
   <game-assignment-player-list></game-assignment-player-list>
@@ -23,3 +22,17 @@
     {{ 'gameAssignment.form.saveGame' | translate }}
   </button>
 </ng-container>
+
+
+<!--<ng-container [ngTemplateOutlet]="formErrorMessages"></ng-container>-->
+
+<ng-template #formErrorMessages>
+  <div *ngIf="getNameFormControl()?.invalid && (getNameFormControl()?.dirty || getNameFormControl()?.touched)">
+    <div *ngIf="getNameFormControl()?.errors?.['repeatedPlayerName']">
+      {{ 'gameAssignment.form.error.repeatedPlayerName' | translate }}
+    </div>
+    <div *ngIf="getNameFormControl()?.errors?.['required']">
+      {{ 'gameAssignment.form.error.requiredPlayerName' | translate }}
+    </div>
+  </div>
+</ng-template>
