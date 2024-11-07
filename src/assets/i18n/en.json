@@ -3,5 +3,8 @@
     "brand": "RMD",
     "createGame": "Create Game",
     "savedGames": "Saved Games"
+  },
+  "home": {
+    "startNewGame": "Start new game!"
   }
 }
