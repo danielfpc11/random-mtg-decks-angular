@@ -14,5 +14,13 @@
       "copy": "Copiar",
       "delete": "Borrar"
     }
+  },
+  "home": {
+    "startNewGame": "¡Empezar nueva partida!"
+  },
+  "navbar": {
+    "brand": "RMD",
+    "createGame": "Crear Partida",
+    "savedGames": "Partidas Guardadas"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "gameAssignment": {
+   "gameAssignment": {
     "form": {
       "add": "Add",
       "changePlayersDecks": "Change Players Decks",
@@ -14,5 +14,13 @@
       "copy": "Copy",
       "delete": "Delete"
     }
+  },
+  "home": {
+    "startNewGame": "Start new game!"
+  },
+  "navbar": {
+    "brand": "RMD",
+    "createGame": "Create Game",
+    "savedGames": "Saved Games"
   }
 }

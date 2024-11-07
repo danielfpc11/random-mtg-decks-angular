@@ -1,0 +1,45 @@
+nav {
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  border-bottom: 0.1rem solid white;
+
+  &:has(a:hover) {
+    border-color: #e90000;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    color: #e90000;
+  }
+}
+
+#brand-container {
+  margin-left: 1.5rem;
+}
+
+#navbar-links-container {
+  margin-right: 1.5rem;
+}
+
+#brand {
+  font-size: 2.5rem;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  font-size: 1.25rem;
+  margin-left: 2rem;
+
+  &:hover {
+    border-bottom: 0.1rem solid;
+  }
+}
