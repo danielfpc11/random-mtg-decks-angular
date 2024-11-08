@@ -9,6 +9,7 @@
       "playerNamePlaceholder": "Enter player name",
       "saveGame": "Save Game",
       "error": {
+        "playerLimitReached": "The player limit has been reached.",
         "repeatedPlayerName": "The player name is repeated.",
         "requiredPlayerName": "The player name is required."
       }

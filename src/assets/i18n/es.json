@@ -9,8 +9,9 @@
       "playerNamePlaceholder": "Introduce el nombre del jugador",
       "saveGame": "Guardar Partida",
       "error": {
-        "repeatedPlayerName": "El nombre del Jugador está repetido.",
-        "requiredPlayerName": "El nombre de Jugador es requerido."
+        "playerLimitReached": "El límite de jugadores ha sido alcanzado.",
+        "repeatedPlayerName": "El nombre del jugador está repetido.",
+        "requiredPlayerName": "El nombre de jugador es requerido."
       }
     },
     "playerList": {

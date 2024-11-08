@@ -1,29 +1,36 @@
-<main>
-  <ng-container *ngIf="decks$ | async; let decks">
-    <h1>{{ 'gameAssignment.form.createGame' | translate }}</h1>
-    <form [formGroup]="playerForm" (ngSubmit)="addPlayer(getRandomDeck(decks))">
-      <div id="name-form-control">
-        <label id="name-label" for="name">
-          {{ 'gameAssignment.form.playerName' | translate }}
-        </label>
-        <input id="name"
-               type="text"
-               formControlName="name"
-               placeholder="{{ 'gameAssignment.form.playerNamePlaceholder' | translate }}">
-      </div>
-      <div class="action-buttons">
-        <ng-container [ngTemplateOutlet]="actionButtons" [ngTemplateOutletContext]="{decks: decks}"></ng-container>
-      </div>
-    </form>
-    <ng-container [ngTemplateOutlet]="formErrorMessages"></ng-container>
-<!--    <game-assignment-player-list></game-assignment-player-list>-->
-  </ng-container>
-  <ng-container [ngTemplateOutlet]="saveGameButton"/>
-</main>
+<ng-container *ngIf="decks$ | async; let decks">
+  <main>
+    <section>
+      <h1>
+        {{ 'gameAssignment.form.createGame' | translate }}
+      </h1>
+      <form [formGroup]="playerForm" (ngSubmit)="addPlayer(getRandomDeck(decks))">
+        <div class="form-control">
+          <label for="name">
+            {{ 'gameAssignment.form.playerName' | translate }}
+          </label>
+          <input id="name" type="text" formControlName="name" placeholder="{{ 'gameAssignment.form.playerNamePlaceholder' | translate }}">
+        </div>
+        <div class="button-container">
+          <button type="submit" id="add-player-button">
+            {{ 'gameAssignment.form.add' | translate }}
+          </button>
+          <button [disabled]="isPlayersEmpty" (click)="changePlayersDecks(decks)" id="change-players-decks-button">
+            {{ 'gameAssignment.form.changePlayersDecks' | translate }}
+          </button>
+        </div>
+      </form>
+      <ng-container [ngTemplateOutlet]="formErrorMessages"/>
+      <game-assignment-player-list/>
+      <button [disabled]="!isEnoughPlayers" (click)="saveGame()" id="save-game-button">
+        {{ 'gameAssignment.form.saveGame' | translate }}
+      </button>
+    </section>
+  </main>
+</ng-container>
 
 <ng-template #formErrorMessages>
-  <div *ngIf="getNameFormControl()?.invalid && (getNameFormControl()?.dirty || getNameFormControl()?.touched)"
-        class="form-error-messages">
+  <div *ngIf="getNameFormControl()?.invalid && (getNameFormControl()?.dirty || getNameFormControl()?.touched)" id="form-error-messages">
     <p *ngIf="getNameFormControl()?.errors?.['repeatedPlayerName']">
       * {{ 'gameAssignment.form.error.repeatedPlayerName' | translate }}
     </p>
@@ -33,24 +40,5 @@
     <p *ngIf="getNameFormControl()?.errors?.['required']">
       * {{ 'gameAssignment.form.error.requiredPlayerName' | translate }}
     </p>
-  </div>
-</ng-template>
-
-<ng-template #actionButtons let-decks='decks'>
-  <button type="submit" class="action-button add-button">
-    {{ 'gameAssignment.form.add' | translate }}
-  </button>
-  <button [disabled]="isPlayersEmpty"
-          (click)="changePlayersDecks(decks)"
-          class="action-button change-players-decks-button">
-    {{ 'gameAssignment.form.changePlayersDecks' | translate }}
-  </button>
-</ng-template>
-
-<ng-template #saveGameButton>
-  <div class="save-game-button-container">
-    <button [disabled]="!isEnoughPlayers" (click)="saveGame()" class="action-button save-game-button">
-      {{ 'gameAssignment.form.saveGame' | translate }}
-    </button>
   </div>
 </ng-template>

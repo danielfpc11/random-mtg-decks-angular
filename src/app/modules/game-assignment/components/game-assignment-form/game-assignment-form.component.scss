@@ -7,30 +7,49 @@ main {
   background-color: #070707;
 }
 
+section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 h1 {
+  width: 100%;
   color: white;
   font-size: 4rem;
 }
 
 form {
-  display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60% auto;
   margin-top: 1rem;
 }
 
-#name-form-control {
-  width: 60%;
+button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  cursor: pointer;
 }
 
-#name-form-control > * {
+game-assignment-player-list {
+  width: 100%;
+  min-height: calc(100vh - 31rem);
+}
+
+.form-control > * {
   display: block;
   color: white;
 }
 
-#name-label {
+.form-control > label {
   font-size: 2rem;
 }
 
-#name {
+.form-control > #name {
   width: 100%;
   margin-top: 1rem;
   padding: 0.5rem 0 0.5rem 0.5rem;
@@ -40,38 +59,30 @@ form {
   font-size: 1.25rem;
 }
 
-.action-buttons {
-  width: 40%;
+.button-container {
+  display: inline-grid;
   margin-left: 2rem;
-  display: flex;
   align-items: end;
-
-  & > * {
-    margin-right: 1rem;
-  }
+  grid-template-columns: auto auto;
 }
 
-.action-button {
-  padding: 0.5rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1.25rem;
-  cursor: pointer;
+.button-container > button {
+  margin-left: 1rem;
 }
 
-.add-button, .save-game-button {
+#add-player-button, #save-game-button {
   color: white;
   background-color: #e90000;
 }
 
-.form-error-messages {
+#save-game-button {
+  margin-top: auto;
+}
+
+#form-error-messages {
+  width: 100%;
   margin: 1rem 0;
   padding-left: 0.5rem;
   font-size: 1.25rem;
   color: red;
-}
-
-.save-game-button-container {
-  display: flex;
-  justify-content: center;
 }
