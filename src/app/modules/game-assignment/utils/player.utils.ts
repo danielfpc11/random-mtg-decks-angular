@@ -1,5 +1,7 @@
 import { Deck, Player } from '../models';
 import { DeckUtils } from './deck.utils';
+import { GAME_PLAYER_LIMIT } from '../constants';
+import { ZERO_NUMBER } from '../../../shared';
 
 export class PlayerUtils {
 
@@ -20,6 +22,10 @@ export class PlayerUtils {
       player.deck = DeckUtils.createEmptyDeck();
       player.deck = DeckUtils.getRandomDeck(players, decks);
     });
+  }
+
+  public static forcePlayerLimit(players: Player[]): Player[] {
+    return players.length > GAME_PLAYER_LIMIT ? players.slice(ZERO_NUMBER, GAME_PLAYER_LIMIT) : players;
   }
 
 }

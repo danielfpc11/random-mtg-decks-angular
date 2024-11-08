@@ -5,8 +5,8 @@ import { DeckService, GameService } from '../../services';
 import { Observable, Subscription, tap } from 'rxjs';
 import { GameAssignmentValidator } from '../../validators';
 import { DeckUtils, PlayerUtils } from '../../utils';
-import { EMPTY_STRING, FormUtils } from '../../../../shared';
-import { NAME_FORM_CONTROL } from '../../constants';
+import { EMPTY_STRING, FormUtils, ZERO_NUMBER } from '../../../../shared';
+import { GAME_PLAYER_MIN, NAME_FORM_CONTROL } from '../../constants';
 
 @Component({
   selector: 'game-assignment-form',
@@ -17,7 +17,8 @@ export class GameAssignmentFormComponent implements OnInit {
 
   protected game!: Game;
   protected playerForm!: FormGroup;
-  protected isChangePlayersDecksDisabled!: boolean;
+  protected isPlayersEmpty!: boolean;
+  protected isEnoughPlayers!: boolean;
   protected subscription: Subscription = new Subscription();
   protected decks$!: Observable<Deck[]>;
   protected game$!: Observable<Game>;
@@ -36,7 +37,8 @@ export class GameAssignmentFormComponent implements OnInit {
                      .pipe(
                        tap((game: Game): void => {
                          this.game = game;
-                         this.isChangePlayersDecksDisabled = this.game.players.length == 0;
+                         this.isPlayersEmpty = this.game.players.length == ZERO_NUMBER;
+                         this.isEnoughPlayers = this.game.players.length >= GAME_PLAYER_MIN;
                          this.updateNameFormControlValidation(this.game.players);
                        })
                      );
@@ -55,7 +57,7 @@ export class GameAssignmentFormComponent implements OnInit {
   }
 
   protected changePlayersDecks(decks: Deck[]): void {
-    if (this.isChangePlayersDecksDisabled) {
+    if (this.isPlayersEmpty) {
       return;
     }
 
@@ -71,7 +73,7 @@ export class GameAssignmentFormComponent implements OnInit {
   }
 
   protected saveGame(): void {
-    if (this.isChangePlayersDecksDisabled) {
+    if (this.isPlayersEmpty) {
       return;
     }
 
@@ -82,7 +84,9 @@ export class GameAssignmentFormComponent implements OnInit {
 
   private updateNameFormControlValidation(players: Player[]): void {
     FormUtils.updateFormControlValidation(this.getNameFormControl(),
-                                          [GameAssignmentValidator.repeatedPlayerName(players), Validators.required]);
+                                          [GameAssignmentValidator.repeatedPlayerName(players),
+                                           GameAssignmentValidator.playersLimit(players),
+                                           Validators.required]);
   }
 
 }
