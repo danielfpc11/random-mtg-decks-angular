@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Game } from '../../models';
 import { ClipboardService } from '../../../../shared';
-import { Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { PlayerUtils } from '../../utils';
-import { GameService } from '../../services';
 
 @Component({
   selector: 'game-assignment-player-list',
@@ -12,23 +11,15 @@ import { GameService } from '../../services';
 })
 export class GameAssignmentPlayerListComponent implements OnInit, OnDestroy {
 
-  protected game!: Game;
+  @Input() public game!: Game;
+  @Output() deletePlayerEventEmitter = new EventEmitter<string>();
   protected subscription: Subscription = new Subscription();
 
-  constructor(protected clipboardService: ClipboardService,
-              protected gameService: GameService) {
+  constructor(protected clipboardService: ClipboardService) {
   }
 
   public ngOnInit(): void {
-    this.subscription.add(this.gameService
-                              .getCurrentGame()
-                              .pipe(
-                                tap((game: Game): void => {
-                                  game.players = PlayerUtils.forcePlayerLimit(game.players);
-                                  this.game = game;
-                                })
-                              )
-                              .subscribe());
+    this.forcePlayerLimit();
   }
 
   public ngOnDestroy(): void {
@@ -43,7 +34,11 @@ export class GameAssignmentPlayerListComponent implements OnInit, OnDestroy {
 
   protected deletePlayer(name: string): void {
     this.game.players = PlayerUtils.deletePlayer(name, this.game.players);
-    this.gameService.setCurrentGame(this.game);
+    this.deletePlayerEventEmitter.emit(name);
+  }
+
+  private forcePlayerLimit(): void {
+    this.game.players = PlayerUtils.forcePlayerLimit(this.game.players);
   }
 
 }

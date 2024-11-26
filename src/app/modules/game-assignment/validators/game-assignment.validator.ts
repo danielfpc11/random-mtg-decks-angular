@@ -15,7 +15,7 @@ export class GameAssignmentValidator {
 
   public static playerLimit(players: Player[]): ValidatorFn {
     return (abstractControl: AbstractControl): ValidationErrors | null => {
-      const isPlayerLimit: boolean = players.length == GAME_PLAYER_LIMIT;
+      const isPlayerLimit: boolean = players.length >= GAME_PLAYER_LIMIT;
       return isPlayerLimit ? {playerLimitReached: {value: abstractControl.value}} : null;
     };
   }
