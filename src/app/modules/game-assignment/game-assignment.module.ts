@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
-import { DeckService, DefaultDeckService, DefaultGameService, DefaultPageService, GameService, PageService } from './services';
 import { GameAssignmentComponentsModule } from './components';
+import {
+  DeckService,
+  DefaultDeckService,
+  DefaultGameService,
+  DefaultPlayerService,
+  GameService,
+  PlayerService
+} from './services';
 
 @NgModule({
   imports: [
@@ -9,7 +16,7 @@ import { GameAssignmentComponentsModule } from './components';
   providers: [
     {provide: DeckService, useClass: DefaultDeckService},
     {provide: GameService, useClass: DefaultGameService},
-    {provide: PageService, useClass: DefaultPageService}
+    {provide: PlayerService, useClass: DefaultPlayerService}
   ]
 })
 export class GameAssignmentModule {
