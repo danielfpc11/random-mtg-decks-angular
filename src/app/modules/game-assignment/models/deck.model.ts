@@ -1,3 +1,6 @@
 export interface Deck {
-  publicUrl: string
+  mainCardId: string,
+  mainCardIdIsCardFace: boolean,
+  publicUrl: string,
+  publicMainCardImageUrl: string
 }
