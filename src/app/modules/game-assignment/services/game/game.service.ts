@@ -3,10 +3,14 @@ import { Game } from '../../models';
 
 export abstract class GameService {
 
-  public abstract getCurrentGame(): Observable<Game>;
+  public abstract findAll(): Observable<Game[]>;
 
-  public abstract setCurrentGame(game: Game): void;
+  public abstract findById(id: number): Observable<Game>;
 
-  public abstract save(game: Game): Observable<Game>;
+  public abstract saveNew(game: Game): Observable<void>;
+
+  public abstract saveUpdate(id: number, game: Game): Observable<void>;
+
+  public abstract deleteById(id: number): Observable<void>;
 
 }

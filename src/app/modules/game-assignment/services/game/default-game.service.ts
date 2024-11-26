@@ -1,27 +1,41 @@
 import { Injectable } from '@angular/core';
 import { GameService } from './game.service';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Game } from '../../models';
-import { GameUtils } from '../../utils';
+import { HttpClient } from '@angular/common/http';
+import { GAME_URL } from '../../constants/api.constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DefaultGameService implements GameService {
 
-  protected currentGameSubject: Subject<Game> = new BehaviorSubject<Game>(GameUtils.createNewGame());
-
-  public getCurrentGame(): Observable<Game> {
-    return this.currentGameSubject.asObservable();
+  constructor(protected httpClient: HttpClient) {
   }
 
-  public setCurrentGame(game: Game): void {
-    this.currentGameSubject.next(game);
+  public findAll(): Observable<Game[]> {
+    return this.httpClient
+               .get<Game[]>(`${GAME_URL}/all`);
   }
 
-  public save(game: Game): Observable<Game> {
-    localStorage.setItem(GameUtils.getGameId(game.id!), JSON.stringify(game));
-    return of(game);
+  public findById(id: number): Observable<Game> {
+    return this.httpClient
+               .get<Game>(`${GAME_URL}/get/${id}`);
+  }
+
+  public saveNew(game: Game): Observable<void> {
+    return this.httpClient
+               .post<void>(`${GAME_URL}/new`, game);
+  }
+
+  public saveUpdate(id: number, game: Game): Observable<void> {
+    return this.httpClient
+               .put<void>(`${GAME_URL}/update/${id}`, game);
+  }
+
+  public deleteById(id: number): Observable<void> {
+    return this.httpClient
+               .delete<void>(`${GAME_URL}/delete/${id}`);
   }
 
 }
