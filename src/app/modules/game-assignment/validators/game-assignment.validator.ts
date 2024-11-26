@@ -13,10 +13,10 @@ export class GameAssignmentValidator {
     };
   }
 
-  public static playersLimit(players: Player[]): ValidatorFn {
+  public static playerLimit(players: Player[]): ValidatorFn {
     return (abstractControl: AbstractControl): ValidationErrors | null => {
-      const isPlayersLimit: boolean = players.length == GAME_PLAYER_LIMIT;
-      return isPlayersLimit ? {playerLimitReached: {value: abstractControl.value}} : null;
+      const isPlayerLimit: boolean = players.length == GAME_PLAYER_LIMIT;
+      return isPlayerLimit ? {playerLimitReached: {value: abstractControl.value}} : null;
     };
   }
 
