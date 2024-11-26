@@ -37,6 +37,7 @@ button {
 
 game-assignment-player-list {
   width: 100%;
+  margin: 1rem 0;
   min-height: calc(100vh - 31rem);
 }
 
@@ -81,8 +82,11 @@ game-assignment-player-list {
 
 #form-error-messages {
   width: 100%;
-  margin: 1rem 0;
   padding-left: 0.5rem;
   font-size: 1.25rem;
   color: red;
+}
+
+#form-error-messages > p {
+  margin: 1rem 0;
 }
