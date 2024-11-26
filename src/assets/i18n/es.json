@@ -2,21 +2,20 @@
   "gameAssignment": {
     "form": {
       "add": "Añadir",
-      "changePlayersDecks": "Cambiar mazos",
+      "setDecks": "Generar Mazos",
       "createGame": "Crear Partida",
       "history": "Historial",
       "playerName": "Nombre del Jugador",
       "playerNamePlaceholder": "Introduce el nombre del jugador",
       "saveGame": "Guardar Partida",
       "error": {
+        "maxLengthPlayerName": "El nombre del jugador no debe superar los 10 caracteres.",
         "playerLimitReached": "El límite de jugadores ha sido alcanzado.",
-        "repeatedPlayerName": "El nombre del jugador está repetido.",
-        "requiredPlayerName": "El nombre de jugador es requerido."
+        "repeatedPlayerName": "El nombre del jugador está repetido."
       }
     },
     "playerList": {
-      "copy": "Copiar",
-      "delete": "Borrar"
+      "noPlayers": "No hay jugadores."
     }
   },
   "home": {
