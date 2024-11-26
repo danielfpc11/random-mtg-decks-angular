@@ -3,7 +3,7 @@ import { GameService } from './game.service';
 import { Observable } from 'rxjs';
 import { Game } from '../../models';
 import { HttpClient } from '@angular/common/http';
-import { GAME_URL } from '../../constants/api.constants';
+import { GAME_URL } from '../../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +24,12 @@ export class DefaultGameService implements GameService {
   }
 
   public saveNew(game: Game): Observable<void> {
+    // Connector y adapter
+    let gameany: any = {
+      playerDatas: game.players
+    }
     return this.httpClient
-               .post<void>(`${GAME_URL}/new`, game);
+               .post<void>(`${GAME_URL}/new`, gameany);
   }
 
   public saveUpdate(id: number, game: Game): Observable<void> {

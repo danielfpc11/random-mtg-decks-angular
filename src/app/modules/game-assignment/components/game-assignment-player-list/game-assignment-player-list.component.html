@@ -5,8 +5,8 @@
 <ng-template #playerContainer>
   <div id="player-container">
     <div *ngFor="let player of game.players" class="player-card">
-      <img src="{{ getCardImageUrlObservable(player?.deck) | async }}"
-           alt="player-card">
+      <img src="{{ player.deck?.publicMainCardImageUrl ?? 'assets/images/deck-not-set.png' }}"
+           alt="player-card-image">
       <div class="player-name">
         <button (click)="copyPublicUrl(player.deck!.publicUrl)" id="copy-deck-url-button">
           {{ player.name }}
