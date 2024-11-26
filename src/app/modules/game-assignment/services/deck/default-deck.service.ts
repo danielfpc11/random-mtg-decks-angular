@@ -18,6 +18,11 @@ export class DefaultDeckService implements DeckService {
                .get<Deck[]>(`${DECK_URL}/all`);
   }
 
+  public findRandomDecks(quantity: number): Observable<Deck[]> {
+    return this.httpClient
+               .get<Deck[]>(`${DECK_URL}/random/${quantity}`);
+  }
+
   public findById(id: number): Observable<Deck> {
     return this.httpClient
                .get<Deck>(`${DECK_URL}/get/${id}`);
