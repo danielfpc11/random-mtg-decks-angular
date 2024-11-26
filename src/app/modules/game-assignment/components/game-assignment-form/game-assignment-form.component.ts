@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Deck, Game, Player } from '../../models';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DeckService, GameService } from '../../services';
-import { Observable, Subscription, tap } from 'rxjs';
-import { GameAssignmentValidator } from '../../validators';
-import { DeckUtils, PlayerUtils } from '../../utils';
-import { EMPTY_STRING, FormUtils, ZERO_NUMBER } from '../../../../shared';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { EMPTY_STRING, ZERO_NUMBER } from '../../../../shared';
+import { Deck, Game } from '../../models';
 import { GAME_PLAYER_MIN, NAME_FORM_CONTROL } from '../../constants';
+import { GameAssignmentValidator } from '../../validators';
+import { Subscription, tap } from 'rxjs';
+import { GameUtils, PlayerUtils } from '../../utils';
 
 @Component({
   selector: 'game-assignment-form',
@@ -17,76 +17,54 @@ export class GameAssignmentFormComponent implements OnInit {
 
   protected game!: Game;
   protected playerForm!: FormGroup;
-  protected isPlayersEmpty!: boolean;
-  protected isEnoughPlayers!: boolean;
   protected subscription: Subscription = new Subscription();
-  protected decks$!: Observable<Deck[]>;
-  protected game$!: Observable<Game>;
 
   constructor(protected deckService: DeckService,
               protected gameService: GameService) {
   }
 
   public ngOnInit(): void {
+    this.game = GameUtils.createNewGame();
     this.playerForm = new FormGroup({
-      name: new FormControl(EMPTY_STRING, [Validators.required])
+      name: new FormControl(EMPTY_STRING, [GameAssignmentValidator.repeatedPlayerName(this.game.players),
+                                           GameAssignmentValidator.playerLimit(this.game.players),
+                                           Validators.required])
     });
-    this.decks$ = this.deckService.getDecks();
-    this.game$ = this.gameService
-                     .getCurrentGame()
-                     .pipe(
-                       tap((game: Game): void => {
-                         this.game = game;
-                         this.isPlayersEmpty = this.game.players.length == ZERO_NUMBER;
-                         this.isEnoughPlayers = this.game.players.length >= GAME_PLAYER_MIN;
-                         this.updateNameFormControlValidation(this.game.players);
-                       })
-                     );
-    this.subscription.add(this.game$.subscribe());
   }
 
-  protected addPlayer(deck: Deck): void {
-    if (this.playerForm.invalid) {
-      return;
+  protected addPlayer(): void {
+    if (this.playerForm.valid) {
+      this.game.players.push({name: this.getNameFormControl()?.value});
+      this.playerForm.reset();
     }
-
-    this.game.players.push({name: this.getNameFormControl()?.value, deck});
-    this.gameService.setCurrentGame(this.game);
-    this.updateNameFormControlValidation(this.game.players);
-    this.playerForm.reset();
   }
 
-  protected changePlayersDecks(decks: Deck[]): void {
-    if (this.isPlayersEmpty) {
-      return;
+  protected setDecks(): void {
+    if (this.game.players.length > ZERO_NUMBER) {
+      this.subscription.add(this.deckService
+                                .findRandomDecks(this.game.players.length)
+                                .pipe(
+                                  tap((decks: Deck[]): void => PlayerUtils.setPlayersDecks(this.game.players, decks))
+                                )
+                                .subscribe());
     }
-
-    PlayerUtils.changePlayersDecks(this.game.players, decks);
   }
 
   protected getNameFormControl(): AbstractControl<any, any> | null {
     return this.playerForm.get(NAME_FORM_CONTROL);
   }
 
-  protected getRandomDeck(decks: Deck[]): Deck {
-    return DeckUtils.getRandomDeck(this.game.players, decks);
-  }
-
   protected saveGame(): void {
-    if (this.isPlayersEmpty) {
-      return;
+    if (this.isValidGame()) {
+      this.subscription.add(this.gameService
+                                .saveNew(this.game)
+                                .subscribe());
     }
-
-    this.subscription.add(this.gameService
-                              .save(this.game)
-                              .subscribe());
   }
 
-  private updateNameFormControlValidation(players: Player[]): void {
-    FormUtils.updateFormControlValidation(this.getNameFormControl(),
-                                          [GameAssignmentValidator.repeatedPlayerName(players),
-                                           GameAssignmentValidator.playersLimit(players),
-                                           Validators.required]);
+  protected isValidGame(): boolean {
+    return this.game.players.length >= GAME_PLAYER_MIN
+           && PlayerUtils.getPlayersWithNoDecks(this.game.players).length == ZERO_NUMBER
   }
 
 }
