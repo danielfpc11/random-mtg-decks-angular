@@ -1,23 +1,26 @@
-<ng-container *ngIf="game">
-  <div class="player-list">
-    <div class="player-item" *ngFor="let player of game.players">
-      <p class="player-name">{{ player.name }}</p>
-      <div class="action-buttons">
-        <ng-container [ngTemplateOutlet]='actionButtons' [ngTemplateOutletContext]="{player: player}"/>
+<ng-container *ngIf="game.players.length > 0; else noPlayers">
+  <ng-container *ngTemplateOutlet="playerContainer"/>
+</ng-container>
+
+<ng-template #playerContainer>
+  <div id="player-container">
+    <div *ngFor="let player of game.players" class="player-card">
+      <img src="{{ getCardImageUrlObservable(player?.deck) | async }}"
+           alt="player-card">
+      <div class="player-name">
+        <button (click)="copyPublicUrl(player.deck!.publicUrl)" id="copy-deck-url-button">
+          {{ player.name }}
+        </button>
+        <button (click)="deletePlayer(player.name)" id="delete-player-button">
+          X
+        </button>
       </div>
     </div>
   </div>
-</ng-container>
+</ng-template>
 
-<ng-template #actionButtons let-player='player'>
-  <button (click)="copyPublicUrl(player.deck.publicUrl)"
-          type="button"
-          class="action-button copy-button">
-    📋 {{ 'gameAssignment.playerList.copy' | translate }}
-  </button>
-  <button (click)="deletePlayer(player.name)"
-          type="button"
-          class="action-button delete-button">
-    🗑️ {{ 'gameAssignment.playerList.delete' | translate }}
-  </button>
+<ng-template #noPlayers>
+  <p id="no-players-message">
+    {{ 'gameAssignment.playerList.noPlayers' | translate }}
+  </p>
 </ng-template>
