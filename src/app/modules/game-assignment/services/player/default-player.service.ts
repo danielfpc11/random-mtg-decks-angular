@@ -8,7 +8,7 @@ import { PLAYER_URL } from '../../constants';
 @Injectable({
   providedIn: 'root'
 })
-export class DefaultGameService implements PlayerService {
+export class DefaultPlayerService implements PlayerService {
 
   constructor(protected httpClient: HttpClient) {
   }
