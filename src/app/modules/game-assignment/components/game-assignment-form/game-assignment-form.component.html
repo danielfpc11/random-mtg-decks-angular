@@ -20,7 +20,7 @@
       </div>
     </form>
     <ng-container [ngTemplateOutlet]="formErrorMessages"/>
-    <game-assignment-player-list [game]="game" (deletePlayerEventEmitter)="updateNameFormControlValidation(game.players)" />
+    <game-assignment-player-list [game]="game" (deletePlayerEventEmitter)="updateNameFormControlValidation()" />
     <button [disabled]="!isValidGame()" type="button" (click)="saveGame()" id="save-game-button">
       {{ 'gameAssignment.form.saveGame' | translate }}
     </button>
@@ -34,6 +34,9 @@
     </p>
     <p *ngIf="getNameFormControl()?.errors?.['playerLimitReached']">
       * {{ 'gameAssignment.form.error.playerLimitReached' | translate }}
+    </p>
+    <p *ngIf="getNameFormControl()?.errors?.['maxlength']">
+      * {{ 'gameAssignment.form.error.maxLengthPlayerName' | translate }}
     </p>
   </div>
 </ng-template>

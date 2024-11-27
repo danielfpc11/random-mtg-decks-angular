@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EMPTY_STRING, FormUtils, ZERO_NUMBER } from '../../../../shared';
-import { Deck, Game, Player } from '../../models';
-import { GAME_PLAYER_MIN, NAME_FORM_CONTROL } from '../../constants';
+import { Deck, Game } from '../../models';
+import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT } from '../../constants';
 import { GameAssignmentValidator } from '../../validators';
 import { Subscription, tap } from 'rxjs';
 import { GameUtils, PlayerUtils } from '../../utils';
@@ -26,16 +26,15 @@ export class GameAssignmentFormComponent implements OnInit {
   public ngOnInit(): void {
     this.game = GameUtils.createNewGame();
     this.playerForm = new FormGroup({
-      name: new FormControl(EMPTY_STRING, [GameAssignmentValidator.repeatedPlayerName(this.game.players),
-                                           GameAssignmentValidator.playerLimit(this.game.players),
-                                           Validators.required])
+      name: new FormControl(EMPTY_STRING)
     });
+    this.updateNameFormControlValidation();
   }
 
   protected addPlayer(): void {
     if (this.playerForm.valid) {
       this.game.players.push({name: this.getNameFormControl()?.value});
-      this.updateNameFormControlValidation(this.game.players);
+      this.updateNameFormControlValidation();
       this.playerForm.reset();
     }
   }
@@ -68,10 +67,11 @@ export class GameAssignmentFormComponent implements OnInit {
            && PlayerUtils.getPlayersWithNoDecks(this.game.players).length == ZERO_NUMBER;
   }
 
-  protected updateNameFormControlValidation(players: Player[]): void {
+  protected updateNameFormControlValidation(): void {
     FormUtils.updateFormControlValidation(this.getNameFormControl(),
-                                          [GameAssignmentValidator.repeatedPlayerName(players),
-                                           GameAssignmentValidator.playerLimit(players),
+                                          [GameAssignmentValidator.repeatedPlayerName(this.game.players),
+                                           GameAssignmentValidator.playerLimit(this.game.players),
+                                           Validators.maxLength(PLAYER_NAME_LIMIT),
                                            Validators.required]);
   }
 
