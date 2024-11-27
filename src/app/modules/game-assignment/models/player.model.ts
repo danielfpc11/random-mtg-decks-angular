@@ -4,5 +4,5 @@ export interface Player {
   id?: number,
   name: string,
   deck?: Deck,
-  gameId: number
+  gameId?: number
 }
