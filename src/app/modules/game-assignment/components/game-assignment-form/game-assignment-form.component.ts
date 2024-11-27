@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DeckService, GameService } from '../../services';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EMPTY_STRING, FormUtils, ZERO_NUMBER } from '../../../../shared';
 import { Deck, Game, Player } from '../../models';
@@ -7,6 +6,7 @@ import { GAME_PLAYER_MIN, NAME_FORM_CONTROL } from '../../constants';
 import { GameAssignmentValidator } from '../../validators';
 import { Subscription, tap } from 'rxjs';
 import { GameUtils, PlayerUtils } from '../../utils';
+import { DeckConnector, GameConnector } from '../../connectors';
 
 @Component({
   selector: 'game-assignment-form',
@@ -19,8 +19,8 @@ export class GameAssignmentFormComponent implements OnInit {
   protected playerForm!: FormGroup;
   protected subscription: Subscription = new Subscription();
 
-  constructor(protected deckService: DeckService,
-              protected gameService: GameService) {
+  constructor(protected deckConnector: DeckConnector,
+              protected gameConnector: GameConnector) {
   }
 
   public ngOnInit(): void {
@@ -42,7 +42,7 @@ export class GameAssignmentFormComponent implements OnInit {
 
   protected setDecks(): void {
     if (this.game.players.length > ZERO_NUMBER) {
-      this.subscription.add(this.deckService
+      this.subscription.add(this.deckConnector
                                 .findRandomDecks(this.game.players.length)
                                 .pipe(
                                   tap((decks: Deck[]): void => PlayerUtils.setPlayersDecks(this.game.players, decks))
@@ -57,8 +57,8 @@ export class GameAssignmentFormComponent implements OnInit {
 
   protected saveGame(): void {
     if (this.isValidGame()) {
-      this.subscription.add(this.gameService
-                                .saveNew(this.game)
+      this.subscription.add(this.gameConnector
+                                .saveNewGame(this.game)
                                 .subscribe());
     }
   }
