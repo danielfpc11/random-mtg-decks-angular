@@ -1,4 +1,6 @@
+export * from './adapters';
 export * from './components';
+export * from './connectors';
 export * from './constants';
 export * from './models';
 export * from './services';
