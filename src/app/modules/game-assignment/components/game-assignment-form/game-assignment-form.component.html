@@ -3,18 +3,18 @@
     <h1>
       {{ 'gameAssignment.form.createGame' | translate }}
     </h1>
-    <form [formGroup]="playerForm" (ngSubmit)="setDecks()">
+    <form [formGroup]="playerForm" (ngSubmit)="addPlayer()">
       <div class="form-control">
         <label for="name">
           {{ 'gameAssignment.form.playerName' | translate }}
         </label>
-        <input id="name" type="text" formControlName="name" placeholder="{{ 'gameAssignment.form.playerNamePlaceholder' | translate }}">
+        <input id="name" type="text" formControlName="name" maxlength="10" placeholder="{{ 'gameAssignment.form.playerNamePlaceholder' | translate }}">
       </div>
       <div class="button-container">
-        <button type="button" (click)="addPlayer()" id="add-player-button">
+        <button type="submit" id="add-player-button">
           {{ 'gameAssignment.form.add' | translate }}
         </button>
-        <button [disabled]="game.players.length == 0" type="submit" id="set-decks-button">
+        <button [disabled]="game.players.length == 0" (click)="setDecks()" type="button" id="set-decks-button">
           {{ 'gameAssignment.form.setDecks' | translate }}
         </button>
       </div>
