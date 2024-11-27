@@ -19,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     GameAssignmentModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
