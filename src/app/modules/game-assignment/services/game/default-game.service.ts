@@ -24,12 +24,8 @@ export class DefaultGameService implements GameService {
   }
 
   public saveNew(game: Game): Observable<void> {
-    // Connector y adapter
-    let gameany: any = {
-      playerDatas: game.players
-    }
     return this.httpClient
-               .post<void>(`${GAME_URL}/new`, gameany);
+               .post<void>(`${GAME_URL}/new`, game);
   }
 
   public saveUpdate(id: number, game: Game): Observable<void> {
