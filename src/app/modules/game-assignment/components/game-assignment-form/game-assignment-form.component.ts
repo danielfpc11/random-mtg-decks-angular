@@ -65,7 +65,7 @@ export class GameAssignmentFormComponent implements OnInit {
 
   protected isValidGame(): boolean {
     return this.game.players.length >= GAME_PLAYER_MIN
-           && PlayerUtils.getPlayersWithNoDecks(this.game.players).length == ZERO_NUMBER
+           && PlayerUtils.getPlayersWithNoDecks(this.game.players).length == ZERO_NUMBER;
   }
 
   protected updateNameFormControlValidation(players: Player[]): void {
