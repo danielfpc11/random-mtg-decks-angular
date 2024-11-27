@@ -1,46 +1,46 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Deck } from '../../models';
+import { HttpClient } from '@angular/common/http';
 import { DeckService } from './deck.service';
-import { forkJoin, map, mergeMap, Observable } from 'rxjs';
-import { Deck, Page } from '../../models';
-import { PageService } from '../page';
-import { COMMANDER_CATEGORY, FIRST_PAGE_INDEX, PAGE_SIZE, ZERO_NUMBER } from '../../../../shared';
+import { DECK_URL } from '../../constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DefaultDeckService implements DeckService {
 
-  constructor(protected pageService: PageService) {
+  constructor(protected httpClient: HttpClient) {
   }
 
-  public getDecks(): Observable<Deck[]> {
-    return this.getPageMetadataObservable()
-               .pipe(
-                 mergeMap((page: Page): Observable<Deck[]> => {
-                   return this.getDecksFromPages(this.getPageLimit(page.totalResults));
-                 })
-               );
+  public findAll(): Observable<Deck[]> {
+    return this.httpClient
+               .get<Deck[]>(`${DECK_URL}/all`);
   }
 
-  private getPageMetadataObservable(): Observable<Page> {
-    return this.pageService
-               .getPage(ZERO_NUMBER, ZERO_NUMBER, COMMANDER_CATEGORY);
+  public findRandomDecks(quantity: number): Observable<Deck[]> {
+    return this.httpClient
+               .get<Deck[]>(`${DECK_URL}/random/${quantity}`);
   }
 
-  private getPageLimit(totalResults: number): number {
-    let pageLimit: number = Math.trunc(totalResults / PAGE_SIZE)
-    return totalResults % PAGE_SIZE == ZERO_NUMBER ? pageLimit : ++pageLimit;
+  public findById(id: number): Observable<Deck> {
+    return this.httpClient
+               .get<Deck>(`${DECK_URL}/get/${id}`);
   }
 
-  private getDecksFromPages(pages: number): Observable<Deck[]> {
-    const pageRequests: Observable<Deck[]>[] = [];
-    for (let i: number = FIRST_PAGE_INDEX; i <= pages; i++) {
-      pageRequests.push(this.pageService
-                            .getPage(i, PAGE_SIZE, COMMANDER_CATEGORY)
-                            .pipe(map((page: Page): Deck[] => page.data)));
-    }
+  public saveNew(deck: Deck): Observable<void> {
+    return this.httpClient
+               .post<void>(`${DECK_URL}/new`, deck);
+  }
 
-    return forkJoin(pageRequests).pipe(map((results: Deck[][]): Deck[] => results.flat()));
+  public saveUpdate(id: number, deck: Deck): Observable<void> {
+    return this.httpClient
+               .put<void>(`${DECK_URL}/update/${id}`, deck);
+  }
+
+  public deleteById(id: number): Observable<void> {
+    return this.httpClient
+               .delete<void>(`${DECK_URL}/delete/${id}`);
   }
 
 }

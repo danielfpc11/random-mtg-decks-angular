@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core';
-import { DeckService, DefaultDeckService, DefaultPageService, PageService } from './services';
+import { GameAssignmentComponentsModule } from './components';
+import {
+  DeckService,
+  DefaultDeckService,
+  DefaultGameService,
+  DefaultPlayerService,
+  GameService,
+  PlayerService
+} from './services';
 
 @NgModule({
+  imports: [
+    GameAssignmentComponentsModule
+  ],
   providers: [
     {provide: DeckService, useClass: DefaultDeckService},
-    {provide: PageService, useClass: DefaultPageService}
+    {provide: GameService, useClass: DefaultGameService},
+    {provide: PlayerService, useClass: DefaultPlayerService}
   ]
 })
 export class GameAssignmentModule {

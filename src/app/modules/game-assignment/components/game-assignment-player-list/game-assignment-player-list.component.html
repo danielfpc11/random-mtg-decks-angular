@@ -1,0 +1,26 @@
+<ng-container *ngIf="game.players.length > 0; else noPlayers">
+  <ng-container *ngTemplateOutlet="playerContainer"/>
+</ng-container>
+
+<ng-template #playerContainer>
+  <div id="player-container">
+    <div *ngFor="let player of game.players" class="player-card">
+      <img src="{{ player.deck?.publicMainCardImageUrl ?? 'assets/images/deck-not-set.png' }}"
+           alt="player-card-image">
+      <div class="player-name">
+        <button (click)="copyPublicUrl(player.deck!.publicUrl)" id="copy-deck-url-button">
+          {{ player.name }}
+        </button>
+        <button (click)="deletePlayer(player.name)" id="delete-player-button">
+          X
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noPlayers>
+  <p id="no-players-message">
+    {{ 'gameAssignment.playerList.noPlayers' | translate }}
+  </p>
+</ng-template>

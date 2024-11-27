@@ -1,10 +1,29 @@
 {
+   "gameAssignment": {
+    "form": {
+      "add": "Add",
+      "setDecks": "Set Decks",
+      "createGame": "Create Game",
+      "history": "History",
+      "playerName": "Player Name",
+      "playerNamePlaceholder": "Enter player name",
+      "saveGame": "Save Game",
+      "error": {
+        "maxLengthPlayerName": "The player name must be lower than 10 characters.",
+        "playerLimitReached": "The player limit has been reached.",
+        "repeatedPlayerName": "The player name is repeated."
+      }
+    },
+    "playerList": {
+      "noPlayers": "There are no players."
+    }
+  },
+  "home": {
+    "startNewGame": "Start new game!"
+  },
   "navbar": {
     "brand": "RMD",
     "createGame": "Create Game",
     "savedGames": "Saved Games"
-  },
-  "home": {
-    "startNewGame": "Start new game!"
   }
 }

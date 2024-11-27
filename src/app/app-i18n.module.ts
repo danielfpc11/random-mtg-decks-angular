@@ -6,7 +6,6 @@ import { TranslateCacheModule, TranslateCacheService, TranslateCacheSettings } f
 import { ENGLISH_LANGUAGE } from './shared';
 
 @NgModule({
-  declarations: [],
   imports: [
     TranslateModule.forRoot({
       defaultLanguage: ENGLISH_LANGUAGE,

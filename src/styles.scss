@@ -6,3 +6,10 @@
 body {
   background-color: black;
 }
+
+button:disabled {
+  cursor: not-allowed !important;
+  background-color: #efefef4c !important;
+  color: #10101077 !important;
+  border-color: #7676764c !important;
+}
