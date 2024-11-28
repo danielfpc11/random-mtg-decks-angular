@@ -20,7 +20,7 @@
       </div>
     </form>
     <ng-container [ngTemplateOutlet]="formErrorMessages"/>
-    <game-assignment-player-list [game]="game" (deletePlayerEventEmitter)="updateNameFormControlValidation()" />
+    <game-assignment-player-list [game]="game" [deleteButton]="true" (deletePlayerEventEmitter)="updateNameFormControlValidation()"/>
     <button [disabled]="!isValidGame()" type="button" (click)="saveGame()" id="save-game-button">
       {{ 'gameAssignment.form.saveGame' | translate }}
     </button>

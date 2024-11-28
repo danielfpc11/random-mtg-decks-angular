@@ -12,7 +12,8 @@ import { PlayerUtils } from '../../utils';
 export class GameAssignmentPlayerListComponent implements OnInit, OnDestroy {
 
   @Input() public game!: Game;
-  @Output() deletePlayerEventEmitter = new EventEmitter<string>();
+  @Input() public deleteButton!: boolean;
+  @Output() public deletePlayerEventEmitter = new EventEmitter<string>();
   protected subscription: Subscription = new Subscription();
 
   constructor(protected clipboardService: ClipboardService) {

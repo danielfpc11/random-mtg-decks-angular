@@ -12,6 +12,16 @@
   grid-gap: 2rem;
 }
 
+#copy-deck-url-button {
+  left: 0;
+  margin-left: 0.25rem;
+}
+
+#delete-player-button {
+  right: 0;
+  margin-right: 0.25rem;
+}
+
 .player-card {
   display: flex;
   flex-direction: column;
@@ -33,16 +43,14 @@
   background-color: gray;
 }
 
+.player-name > p {
+ font-size: 1.5rem;
+}
+
 .player-name > button {
-  font-size: 1.5rem;
+  position: absolute;
   border: none;
   background-color: transparent;
   cursor: pointer;
-}
-
-.player-name > #delete-player-button {
-  position: absolute;
-  right: 0;
-  margin: 0.25rem 0.25rem 0 0;
-  font-size: 1rem;
+  font-size: 1.25rem;
 }

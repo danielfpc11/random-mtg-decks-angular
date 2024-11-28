@@ -16,6 +16,13 @@
     },
     "playerList": {
       "noPlayers": "No hay jugadores."
+    },
+    "savedGame": {
+      "game": "Partida {{gameId}}"
+    },
+    "savedGameList": {
+      "date": "Fecha",
+      "players": "Jugadores"
     }
   },
   "home": {
