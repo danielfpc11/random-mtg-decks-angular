@@ -23,19 +23,19 @@ export class DefaultPlayerService implements PlayerService {
                .get<Player>(`${PLAYER_URL}/get/${id}`);
   }
 
-  public saveNew(player: Player): Observable<void> {
+  public saveNew(player: Player): Observable<number> {
     return this.httpClient
-               .post<void>(`${PLAYER_URL}/new`, player);
+               .post<number>(`${PLAYER_URL}/new`, player);
   }
 
-  public saveUpdate(id: number, player: Player): Observable<void> {
+  public saveUpdate(id: number, player: Player): Observable<number> {
     return this.httpClient
-               .put<void>(`${PLAYER_URL}/update/${id}`, player);
+               .put<number>(`${PLAYER_URL}/update/${id}`, player);
   }
 
-  public deleteById(id: number): Observable<void> {
+  public deleteById(id: number): Observable<number> {
     return this.httpClient
-               .delete<void>(`${PLAYER_URL}/delete/${id}`);
+               .delete<number>(`${PLAYER_URL}/delete/${id}`);
   }
 
 }

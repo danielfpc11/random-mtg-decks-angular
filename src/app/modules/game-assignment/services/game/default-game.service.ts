@@ -23,19 +23,19 @@ export class DefaultGameService implements GameService {
                .get<Game>(`${GAME_URL}/get/${id}`);
   }
 
-  public saveNew(game: Game): Observable<void> {
+  public saveNew(game: Game): Observable<number> {
     return this.httpClient
-               .post<void>(`${GAME_URL}/new`, game);
+               .post<number>(`${GAME_URL}/new`, game);
   }
 
-  public saveUpdate(id: number, game: Game): Observable<void> {
+  public saveUpdate(id: number, game: Game): Observable<number> {
     return this.httpClient
-               .put<void>(`${GAME_URL}/update/${id}`, game);
+               .put<number>(`${GAME_URL}/update/${id}`, game);
   }
 
-  public deleteById(id: number): Observable<void> {
+  public deleteById(id: number): Observable<number> {
     return this.httpClient
-               .delete<void>(`${GAME_URL}/delete/${id}`);
+               .delete<number>(`${GAME_URL}/delete/${id}`);
   }
 
 }

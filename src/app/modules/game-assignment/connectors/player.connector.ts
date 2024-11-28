@@ -32,7 +32,7 @@ export class PlayerConnector {
                );
   }
 
-  saveNewPlayer(player: Player): Observable<void> {
+  saveNewPlayer(player: Player): Observable<number> {
     return this.playerService
                .saveNew(PlayerAdapter.adaptRequestBody(player))
                .pipe(
@@ -40,7 +40,7 @@ export class PlayerConnector {
                );
   }
 
-  saveUpdatePlayer(id: number, player: Player): Observable<void> {
+  saveUpdatePlayer(id: number, player: Player): Observable<number> {
     return this.playerService
                .saveUpdate(id, PlayerAdapter.adaptRequestBody(player))
                .pipe(
@@ -48,7 +48,7 @@ export class PlayerConnector {
                );
   }
 
-  deletePlayerById(id: number): Observable<void> {
+  deletePlayerById(id: number): Observable<number> {
     return this.playerService
                .deleteById(id)
                .pipe(
