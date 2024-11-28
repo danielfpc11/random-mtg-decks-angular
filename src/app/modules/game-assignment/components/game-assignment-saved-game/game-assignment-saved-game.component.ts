@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, mergeMap, Observable, tap } from 'rxjs';
+import { map, mergeMap, Observable } from 'rxjs';
 import { Game } from '../../models';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GameConnector } from '../../connectors';
