@@ -9,9 +9,12 @@
            alt="player-card-image">
       <div class="player-name">
         <button (click)="copyPublicUrl(player.deck!.publicUrl)" id="copy-deck-url-button">
-          {{ player.name }}
+          📋
         </button>
-        <button (click)="deletePlayer(player.name)" id="delete-player-button">
+        <p>
+          {{ player.name }}
+        </p>
+        <button *ngIf="deleteButton" (click)="deletePlayer(player.name)" id="delete-player-button">
           X
         </button>
       </div>
