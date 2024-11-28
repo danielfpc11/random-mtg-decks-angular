@@ -4,7 +4,7 @@ import { Game } from '../../models';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GameConnector } from '../../connectors';
 import { GAME_ID_PARAM } from '../../constants';
-import { DateUtils } from '../../../../shared/utils/date.utils';
+import { DateUtils } from '../../../../shared';
 
 @Component({
   selector: 'game-assignment-saved-game',
