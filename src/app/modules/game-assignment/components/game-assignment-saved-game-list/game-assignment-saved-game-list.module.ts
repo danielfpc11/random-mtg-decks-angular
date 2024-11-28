@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameAssignmentSavedGameListComponent } from './game-assignment-saved-game-list.component';
+import { RouterLink } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { GameAssignmentSavedGameListComponent } from './game-assignment-saved-ga
     GameAssignmentSavedGameListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink
   ]
 })
 export class GameAssignmentSavedGameListModule {

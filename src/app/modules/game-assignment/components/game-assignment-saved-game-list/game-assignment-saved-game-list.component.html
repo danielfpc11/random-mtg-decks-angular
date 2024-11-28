@@ -1,0 +1,20 @@
+<main>
+  <ng-container *ngIf="games$ | async; let games">
+    <table>
+      <thead>
+      <tr>
+        <th></th>
+        <th>Date</th>
+        <th>Players</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let game of games" [routerLink]="['/saved-game', game.id]">
+        <th>{{ game.id }}</th>
+        <td>{{ DateUtils.formatDate(game.date) }}</td>
+        <td>{{ game.players.length }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</main>
