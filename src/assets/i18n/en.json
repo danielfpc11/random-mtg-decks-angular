@@ -1,5 +1,5 @@
 {
-   "gameAssignment": {
+  "gameAssignment": {
     "form": {
       "add": "Add",
       "setDecks": "Set Decks",
@@ -16,6 +16,9 @@
     },
     "playerList": {
       "noPlayers": "There are no players."
+    },
+    "savedGame": {
+      "game": "Game {{gameId}}"
     }
   },
   "home": {

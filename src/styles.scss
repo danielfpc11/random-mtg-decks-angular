@@ -7,6 +7,12 @@ body {
   background-color: black;
 }
 
+h1 {
+  width: 100%;
+  color: white;
+  font-size: 4rem;
+}
+
 button:disabled {
   cursor: not-allowed !important;
   background-color: #efefef4c !important;

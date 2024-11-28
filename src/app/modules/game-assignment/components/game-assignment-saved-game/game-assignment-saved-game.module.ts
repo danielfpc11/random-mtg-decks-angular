@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameAssignmentSavedGameComponent } from './game-assignment-saved-game.component';
 import { GameAssignmentPlayerListModule } from '../game-assignment-player-list';
-import { GameAssignmentFormModule } from '../game-assignment-form';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { GameAssignmentFormModule } from '../game-assignment-form';
   imports: [
     CommonModule,
     GameAssignmentPlayerListModule,
-    GameAssignmentFormModule
+    TranslateModule
   ]
 })
 export class GameAssignmentSavedGameModule {
