@@ -1,4 +1,5 @@
 export const ZERO_NUMBER: number = 0;
+export const ONE_NUMBER: number = 1;
 export const MAX_DATE_DIGITS: number = 2;
 export const EMPTY_STRING: string = '';
 export const HYPHEN_STRING: string = '-';
