@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { EMPTY_STRING, FormUtils, ZERO_NUMBER } from '../../../../shared';
+import { ClipboardService, EMPTY_STRING, FormUtils, LocationUtils, ZERO_NUMBER } from '../../../../shared';
 import { Deck, Game } from '../../models';
-import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT } from '../../constants';
+import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT, SAVED_GAME_URL } from '../../constants';
 import { GameAssignmentValidator } from '../../validators';
-import { Subscription, tap } from 'rxjs';
+import { map, merge, mergeMap, Observable, Subscription, tap } from 'rxjs';
 import { GameUtils, PlayerUtils } from '../../utils';
 import { DeckConnector, GameConnector } from '../../connectors';
+import { Router, UrlTree } from '@angular/router';
 
 @Component({
   selector: 'game-assignment-form',
@@ -20,7 +21,9 @@ export class GameAssignmentFormComponent implements OnInit {
   protected subscription: Subscription = new Subscription();
 
   constructor(protected deckConnector: DeckConnector,
-              protected gameConnector: GameConnector) {
+              protected gameConnector: GameConnector,
+              protected clipboardService: ClipboardService,
+              protected router: Router) {
   }
 
   public ngOnInit(): void {
@@ -58,6 +61,10 @@ export class GameAssignmentFormComponent implements OnInit {
     if (this.isValidGame()) {
       this.subscription.add(this.gameConnector
                                 .saveNewGame(this.game)
+                                .pipe(
+                                  map((gameId: number): UrlTree => this.router.createUrlTree([SAVED_GAME_URL, gameId])),
+                                  mergeMap((savedGameUrlTree: UrlTree) => this.copyAndNavigateUrlObservable(savedGameUrlTree))
+                                )
                                 .subscribe());
     }
   }
@@ -73,6 +80,13 @@ export class GameAssignmentFormComponent implements OnInit {
                                            GameAssignmentValidator.playerLimit(this.game.players),
                                            Validators.maxLength(PLAYER_NAME_LIMIT),
                                            Validators.required]);
+  }
+
+  private copyAndNavigateUrlObservable(urlTree: UrlTree): Observable<boolean | void> {
+    return merge(
+      this.clipboardService.copyToClipboard(LocationUtils.createUrlWithOrigin(urlTree.toString())),
+      this.router.navigateByUrl(urlTree)
+    );
   }
 
 }
