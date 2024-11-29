@@ -1,0 +1,6 @@
+<ng-container *ngIf="alert$ | async; let alert">
+  {{ alert.alertType }}
+  {{ alert.message }}
+  {{ alert.timeOut }}
+  {{ alert.value }}
+</ng-container>
