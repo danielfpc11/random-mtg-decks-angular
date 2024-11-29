@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ClipboardService, EMPTY_STRING, FormUtils, LocationUtils, ZERO_NUMBER } from '../../../../shared';
+import { Alert, AlertType, ClipboardService, EMPTY_STRING, FormUtils, GlobalMessageService, UrlUtils, ZERO_NUMBER } from '../../../../shared';
 import { Deck, Game } from '../../models';
-import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT, SAVED_GAME_URL } from '../../constants';
+import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT, SAVED_GAME_ALERT_TIMEOUT, SAVED_GAME_ALERT_URL_COPIED, SAVED_GAME_URL } from '../../constants';
 import { GameAssignmentValidator } from '../../validators';
 import { map, merge, mergeMap, Observable, Subscription, tap } from 'rxjs';
 import { GameUtils, PlayerUtils } from '../../utils';
@@ -23,6 +23,7 @@ export class GameAssignmentFormComponent implements OnInit {
   constructor(protected deckConnector: DeckConnector,
               protected gameConnector: GameConnector,
               protected clipboardService: ClipboardService,
+              protected globalMessageService: GlobalMessageService,
               protected router: Router) {
   }
 
@@ -63,7 +64,8 @@ export class GameAssignmentFormComponent implements OnInit {
                                 .saveNewGame(this.game)
                                 .pipe(
                                   map((gameId: number): UrlTree => this.router.createUrlTree([SAVED_GAME_URL, gameId])),
-                                  mergeMap((savedGameUrlTree: UrlTree) => this.copyAndNavigateUrlObservable(savedGameUrlTree))
+                                  mergeMap((savedGameUrlTree: UrlTree) => this.copyAndNavigateUrlObservable(savedGameUrlTree)),
+                                  tap(() => this.globalMessageService.sendMessage(this.urlCopiedAlert()))
                                 )
                                 .subscribe());
     }
@@ -87,6 +89,14 @@ export class GameAssignmentFormComponent implements OnInit {
       this.clipboardService.copyToClipboard(UrlUtils.createUrlWithOrigin(urlTree.toString())),
       this.router.navigateByUrl(urlTree)
     );
+  }
+
+  private urlCopiedAlert(): Alert {
+    return {
+      alertType: AlertType.SUCCESS,
+      message: SAVED_GAME_ALERT_URL_COPIED,
+      timeOut: SAVED_GAME_ALERT_TIMEOUT
+    };
   }
 
 }

@@ -25,6 +25,9 @@
       "players": "Jugadores"
     }
   },
+  "globalMessage": {
+    "gameUrlCopied": "El URL de la partida se ha copiado en el portapapeles."
+  },
   "home": {
     "startNewGame": "¡Empezar nueva partida!"
   },
