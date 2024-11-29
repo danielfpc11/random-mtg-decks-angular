@@ -4,7 +4,7 @@ import { Alert, AlertType, ClipboardService, EMPTY_STRING, FormUtils, GlobalMess
 import { Deck, Game } from '../../models';
 import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT, SAVED_GAME_ALERT_TIMEOUT, SAVED_GAME_ALERT_URL_COPIED, SAVED_GAME_URL } from '../../constants';
 import { GameAssignmentValidator } from '../../validators';
-import { map, merge, mergeMap, Observable, Subscription, tap } from 'rxjs';
+import { map, merge, Observable, Subscription, switchMap, tap } from 'rxjs';
 import { GameUtils, PlayerUtils } from '../../utils';
 import { DeckConnector, GameConnector } from '../../connectors';
 import { Router, UrlTree } from '@angular/router';
@@ -64,7 +64,7 @@ export class GameAssignmentFormComponent implements OnInit {
                                 .saveNewGame(this.game)
                                 .pipe(
                                   map((gameId: number): UrlTree => this.router.createUrlTree([SAVED_GAME_URL, gameId])),
-                                  mergeMap((savedGameUrlTree: UrlTree) => this.copyAndNavigateUrlObservable(savedGameUrlTree)),
+                                  switchMap((savedGameUrlTree: UrlTree) => this.copyAndNavigateUrlObservable(savedGameUrlTree)),
                                   tap(() => this.globalMessageService.sendMessage(this.urlCopiedAlert()))
                                 )
                                 .subscribe());
@@ -95,7 +95,7 @@ export class GameAssignmentFormComponent implements OnInit {
     return {
       alertType: AlertType.SUCCESS,
       message: SAVED_GAME_ALERT_URL_COPIED,
-      timeOut: SAVED_GAME_ALERT_TIMEOUT
+      timeout: SAVED_GAME_ALERT_TIMEOUT
     };
   }
 
