@@ -1,5 +1,5 @@
 <ng-container *ngIf="alert">
-  <div>
+  <div class="alert-{{ alert.alertType }}">
     <p>
       {{ alert.message | translate: {value: alert.value} }}
     </p>
