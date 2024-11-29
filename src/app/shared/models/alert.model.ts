@@ -3,6 +3,6 @@ import { AlertType } from '../enums';
 export interface Alert {
   alertType: AlertType,
   message: string,
-  timeOut?: number
+  timeout?: number
   value?: any,
 }
