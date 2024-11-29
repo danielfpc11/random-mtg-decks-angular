@@ -84,7 +84,7 @@ export class GameAssignmentFormComponent implements OnInit {
 
   private copyAndNavigateUrlObservable(urlTree: UrlTree): Observable<boolean | void> {
     return merge(
-      this.clipboardService.copyToClipboard(LocationUtils.createUrlWithOrigin(urlTree.toString())),
+      this.clipboardService.copyToClipboard(UrlUtils.createUrlWithOrigin(urlTree.toString())),
       this.router.navigateByUrl(urlTree)
     );
   }
