@@ -4,13 +4,16 @@ import {
   ClipboardService,
   DefaultClipboardService,
   DefaultErrorHandlerService,
-  ErrorHandlerService
+  DefaultGlobalMessageService,
+  ErrorHandlerService,
+  GlobalMessageService
 } from './services';
 
 @NgModule({
   providers: [
     {provide: ClipboardService, useClass: DefaultClipboardService},
     {provide: ErrorHandlerService, useClass: DefaultErrorHandlerService},
+    {provide: GlobalMessageService, useClass: DefaultGlobalMessageService}
   ],
   exports: [
     SharedComponentsModule
