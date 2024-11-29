@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GlobalMessageService } from './global-message.service';
 import { Alert } from '../../models';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
