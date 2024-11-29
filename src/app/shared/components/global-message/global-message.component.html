@@ -1,6 +1,7 @@
-<ng-container *ngIf="alert$ | async; let alert">
-  {{ alert.alertType }}
-  {{ alert.message }}
-  {{ alert.timeOut }}
-  {{ alert.value }}
+<ng-container *ngIf="alert">
+  <div>
+    <p>
+      {{ alert.message | translate: {value: alert.value} }}
+    </p>
+  </div>
 </ng-container>
