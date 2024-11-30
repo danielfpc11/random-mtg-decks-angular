@@ -38,8 +38,30 @@ a {
 .navbar-link {
   font-size: 1.25rem;
   margin-left: 2rem;
+  text-align: center;
 
   &:hover {
     border-bottom: 0.1rem solid;
   }
+}
+
+@media (max-width: 500px) {
+
+  #brand {
+    font-size: 2rem;
+  }
+
+  #brand-container {
+    margin-left: 0.5rem;
+  }
+
+  #navbar-links-container {
+    margin-right: 0.5rem;
+  }
+
+  .navbar-link {
+    font-size: 1rem;
+    margin-left: 1rem;
+  }
+
 }
