@@ -17,7 +17,7 @@ section {
 form {
   width: 100%;
   display: grid;
-  grid-template-columns: 60% auto;
+  grid-template-columns: 65% auto;
   margin-top: 1rem;
 }
 
@@ -35,6 +35,17 @@ game-assignment-player-list {
   margin: 2rem 0;
 }
 
+#name {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #222222;
+  border: none;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  font-size: 1.25rem;
+}
+
 .form-control > * {
   display: block;
   color: white;
@@ -44,25 +55,14 @@ game-assignment-player-list {
   font-size: 2rem;
 }
 
-.form-control > #name {
-  width: 100%;
-  margin-top: 1rem;
-  padding: 0.5rem 0 0.5rem 0.5rem;
-  background-color: #222222;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1.25rem;
-}
-
 .button-container {
   display: inline-grid;
-  margin-left: 2rem;
   align-items: end;
   grid-template-columns: auto auto;
 }
 
 .button-container > button {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 #add-player-button, #save-game-button {
@@ -83,4 +83,56 @@ game-assignment-player-list {
 
 #form-error-messages > p {
   margin: 1rem 0;
+}
+
+@media (max-width: 1200px) {
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  game-assignment-player-list {
+    margin: 1rem 0;
+  }
+
+  #add-player-button {
+    margin-right: 0.5rem;
+  }
+
+  #set-decks-button {
+    margin-left: 0.5rem;
+  }
+
+  #form-error-messages, #name, button {
+    font-size: 1rem;
+  }
+
+  .form-control > label {
+    font-size: 1.5rem;
+  }
+
+  .button-container {
+    margin: 0.5rem 0;
+  }
+
+  .button-container > button {
+    margin-left: 0;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  main {
+    width: 75%;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
 }
