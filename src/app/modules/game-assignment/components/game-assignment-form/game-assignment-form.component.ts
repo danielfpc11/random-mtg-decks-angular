@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { EMPTY_STRING, FormUtils, ZERO_NUMBER } from '../../../../shared';
+import { Alert, AlertType, ClipboardService, EMPTY_STRING, FormUtils, GlobalMessageService, UrlUtils, ZERO_NUMBER } from '../../../../shared';
 import { Deck, Game } from '../../models';
-import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT } from '../../constants';
+import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT, SAVED_GAME_ALERT_TIMEOUT, SAVED_GAME_ALERT_URL_COPIED, SAVED_GAME_URL } from '../../constants';
 import { GameAssignmentValidator } from '../../validators';
-import { Subscription, tap } from 'rxjs';
+import { map, merge, Observable, Subscription, switchMap, tap } from 'rxjs';
 import { GameUtils, PlayerUtils } from '../../utils';
 import { DeckConnector, GameConnector } from '../../connectors';
+import { Router, UrlTree } from '@angular/router';
 
 @Component({
   selector: 'game-assignment-form',
@@ -20,7 +21,10 @@ export class GameAssignmentFormComponent implements OnInit {
   protected subscription: Subscription = new Subscription();
 
   constructor(protected deckConnector: DeckConnector,
-              protected gameConnector: GameConnector) {
+              protected gameConnector: GameConnector,
+              protected clipboardService: ClipboardService,
+              protected globalMessageService: GlobalMessageService,
+              protected router: Router) {
   }
 
   public ngOnInit(): void {
@@ -58,6 +62,11 @@ export class GameAssignmentFormComponent implements OnInit {
     if (this.isValidGame()) {
       this.subscription.add(this.gameConnector
                                 .saveNewGame(this.game)
+                                .pipe(
+                                  map((gameId: number): UrlTree => this.router.createUrlTree([SAVED_GAME_URL, gameId])),
+                                  switchMap((savedGameUrlTree: UrlTree) => this.copyAndNavigateUrlObservable(savedGameUrlTree)),
+                                  tap(() => this.globalMessageService.sendMessage(this.urlCopiedAlert()))
+                                )
                                 .subscribe());
     }
   }
@@ -73,6 +82,21 @@ export class GameAssignmentFormComponent implements OnInit {
                                            GameAssignmentValidator.playerLimit(this.game.players),
                                            Validators.maxLength(PLAYER_NAME_LIMIT),
                                            Validators.required]);
+  }
+
+  private copyAndNavigateUrlObservable(urlTree: UrlTree): Observable<boolean | void> {
+    return merge(
+      this.clipboardService.copyToClipboard(UrlUtils.createUrlWithOrigin(urlTree.toString())),
+      this.router.navigateByUrl(urlTree)
+    );
+  }
+
+  private urlCopiedAlert(): Alert {
+    return {
+      alertType: AlertType.SUCCESS,
+      message: SAVED_GAME_ALERT_URL_COPIED,
+      timeout: SAVED_GAME_ALERT_TIMEOUT
+    };
   }
 
 }

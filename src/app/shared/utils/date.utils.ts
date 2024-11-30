@@ -1,4 +1,4 @@
-import { MAX_DATE_DIGITS, ONE_NUMBER, ZERO_STRING } from '../constants';
+import { MAX_DATE_DIGITS, ONE_NUMBER, TIMEOUT_MILLISECONDS, ZERO_STRING } from '../constants';
 
 export class DateUtils {
 
@@ -10,6 +10,10 @@ export class DateUtils {
 
   public static formatDateDigit(digit: number): string {
     return digit.toString().padStart(MAX_DATE_DIGITS, ZERO_STRING);
+  }
+
+  public static secondsToMilliseconds(seconds: number): number {
+    return seconds * TIMEOUT_MILLISECONDS;
   }
 
 }

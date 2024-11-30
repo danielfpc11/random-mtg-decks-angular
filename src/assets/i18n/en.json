@@ -25,6 +25,9 @@
       "players": "Players"
     }
   },
+  "globalMessage": {
+    "gameUrlCopied": "Game URL has been copied to the clipboard."
+  },
   "home": {
     "startNewGame": "Start new game!"
   },

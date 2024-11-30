@@ -32,7 +32,7 @@ export class GameConnector {
                );
   }
 
-  saveNewGame(game: Game): Observable<void> {
+  saveNewGame(game: Game): Observable<number> {
     return this.gameService
                .saveNew(GameAdapter.adaptRequestBody(game))
                .pipe(
@@ -40,7 +40,7 @@ export class GameConnector {
                );
   }
 
-  saveUpdateGame(id: number, game: Game): Observable<void> {
+  saveUpdateGame(id: number, game: Game): Observable<number> {
     return this.gameService
                .saveUpdate(id, GameAdapter.adaptRequestBody(game))
                .pipe(
@@ -48,7 +48,7 @@ export class GameConnector {
                );
   }
 
-  deleteGameById(id: number): Observable<void> {
+  deleteGameById(id: number): Observable<number> {
     return this.gameService
                .deleteById(id)
                .pipe(

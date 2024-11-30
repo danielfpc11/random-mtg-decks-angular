@@ -1,0 +1,7 @@
+<ng-container *ngIf="alert">
+  <div class="alert-{{ alert.alertType }}">
+    <p>
+      {{ alert.message | translate: {value: alert.value} }}
+    </p>
+  </div>
+</ng-container>

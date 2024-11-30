@@ -28,19 +28,19 @@ export class DefaultDeckService implements DeckService {
                .get<Deck>(`${DECK_URL}/get/${id}`);
   }
 
-  public saveNew(deck: Deck): Observable<void> {
+  public saveNew(deck: Deck): Observable<number> {
     return this.httpClient
-               .post<void>(`${DECK_URL}/new`, deck);
+               .post<number>(`${DECK_URL}/new`, deck);
   }
 
-  public saveUpdate(id: number, deck: Deck): Observable<void> {
+  public saveUpdate(id: number, deck: Deck): Observable<number> {
     return this.httpClient
-               .put<void>(`${DECK_URL}/update/${id}`, deck);
+               .put<number>(`${DECK_URL}/update/${id}`, deck);
   }
 
-  public deleteById(id: number): Observable<void> {
+  public deleteById(id: number): Observable<number> {
     return this.httpClient
-               .delete<void>(`${DECK_URL}/delete/${id}`);
+               .delete<number>(`${DECK_URL}/delete/${id}`);
   }
 
 }

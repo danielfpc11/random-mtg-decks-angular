@@ -7,10 +7,10 @@ export abstract class GameService {
 
   public abstract findById(id: number): Observable<Game>;
 
-  public abstract saveNew(game: Game): Observable<void>;
+  public abstract saveNew(game: Game): Observable<number>;
 
-  public abstract saveUpdate(id: number, game: Game): Observable<void>;
+  public abstract saveUpdate(id: number, game: Game): Observable<number>;
 
-  public abstract deleteById(id: number): Observable<void>;
+  public abstract deleteById(id: number): Observable<number>;
 
 }

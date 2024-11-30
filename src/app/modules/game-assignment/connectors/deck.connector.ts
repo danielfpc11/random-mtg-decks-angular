@@ -41,7 +41,7 @@ export class DeckConnector {
                );
   }
 
-  saveNewDeck(deck: Deck): Observable<void> {
+  saveNewDeck(deck: Deck): Observable<number> {
     return this.deckService
                .saveNew(DeckAdapter.adaptRequestBody(deck))
                .pipe(
@@ -49,7 +49,7 @@ export class DeckConnector {
                );
   }
 
-  saveUpdateDeck(id: number, deck: Deck): Observable<void> {
+  saveUpdateDeck(id: number, deck: Deck): Observable<number> {
     return this.deckService
                .saveUpdate(id, DeckAdapter.adaptRequestBody(deck))
                .pipe(
@@ -57,7 +57,7 @@ export class DeckConnector {
                );
   }
 
-  deleteDeckById(id: number): Observable<void> {
+  deleteDeckById(id: number): Observable<number> {
     return this.deckService
                .deleteById(id)
                .pipe(

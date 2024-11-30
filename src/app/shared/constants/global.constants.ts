@@ -1,3 +1,5 @@
+export const DEFAULT_ALERT_TIMEOUT: number = 10;
+export const TIMEOUT_MILLISECONDS: number = 1000;
 export const ZERO_NUMBER: number = 0;
 export const ONE_NUMBER: number = 1;
 export const MAX_DATE_DIGITS: number = 2;

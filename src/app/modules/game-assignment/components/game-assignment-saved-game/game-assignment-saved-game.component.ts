@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, mergeMap, Observable } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { Game } from '../../models';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GameConnector } from '../../connectors';
@@ -25,7 +25,7 @@ export class GameAssignmentSavedGameComponent implements OnInit {
                      .params
                      .pipe(
                        map((params: Params): number => Number(params[GAME_ID_PARAM])),
-                       mergeMap((gameId: number): Observable<Game> => this.gameConnector.findGameById(gameId))
+                       switchMap((gameId: number): Observable<Game> => this.gameConnector.findGameById(gameId))
                      );
   }
 
