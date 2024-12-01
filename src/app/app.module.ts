@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppI18nModule } from './app-i18n.module';
 import { SharedModule } from './shared';
-import { GameAssignmentModule } from './modules';
+import { AuthenticationModule, GameAssignmentModule } from './modules';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppI18nModule,
     HttpClientModule,
     SharedModule,
+    AuthenticationModule,
     GameAssignmentModule
   ],
   bootstrap: [AppComponent]
