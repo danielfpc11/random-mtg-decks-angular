@@ -21,7 +21,7 @@ export class AuthenticationInterceptor implements HttpInterceptor, OnDestroy {
                                                                  filter(token => !!token),
                                                                  tap(token => req = this.addAuthorizationHeader(req, token!)),
                                                                )
-                                                               .subscribe())
+                                                               .subscribe());
     }
 
     return next.handle(req);
