@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs/internal/Observable';
-import { Authentication, User } from '../models';
+import { Authentication } from '../models';
+import { User } from '../../../shared';
 
 export abstract class AuthenticationService {
 

@@ -3,8 +3,9 @@ import { AuthenticationService } from './authentication.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { AuthenticationType } from '../enums';
-import { Authentication, User } from '../models';
+import { Authentication } from '../models';
 import { AUTHENTICATION_URL } from '../constants';
+import { User } from '../../../shared';
 
 @Injectable({
   providedIn: 'root'
