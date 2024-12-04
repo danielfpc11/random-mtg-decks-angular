@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AuthenticationService, DefaultAuthenticationService } from './services';
-import { AuthenticationInterceptor } from './interceptors';
+import { AuthenticationInterceptor, ForbiddenResponseInterceptor } from './interceptors';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ForbiddenResponseInterceptor } from './interceptors/forbidden-response.interceptor';
 
 @NgModule({
   providers: [
