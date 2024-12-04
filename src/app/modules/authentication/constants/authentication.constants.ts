@@ -1,5 +1,5 @@
 export const TOKEN_KEY: string = 'token';
-export const TOKEN_PREFIX: string = 'Basic';
+export const TOKEN_PREFIX: string = 'Bearer';
 export const AUTHORIZATION_HEADER: string = 'Authorization';
 export const DECK_DELETE_ENDPOINT: string = '/deck/delete/';
 export const DECK_FIND_ALL_ENDPOINT: string = '/deck/all';
