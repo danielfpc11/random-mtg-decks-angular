@@ -1,8 +1,10 @@
+export const AUTHORIZATION_HEADER: string = 'Authorization';
 export const TOKEN_KEY: string = 'token';
 export const TOKEN_PREFIX: string = 'Bearer';
-export const AUTHENTICATION_LOGIN: string = '/authentication/login';
-export const AUTHENTICATION_REGISTER: string = '/authentication/register';
-export const AUTHORIZATION_HEADER: string = 'Authorization';
+
+// Endpoints
+export const AUTHENTICATION_LOGIN_ENDPOINT: string = '/authentication/login';
+export const AUTHENTICATION_REGISTER_ENDPOINT: string = '/authentication/register';
 export const DECK_DELETE_ENDPOINT: string = '/deck/delete/';
 export const DECK_FIND_ALL_ENDPOINT: string = '/deck/all';
 export const DECK_FIND_BY_ID_ENDPOINT: string = '/deck/get/';
@@ -14,11 +16,6 @@ export const GAME_FIND_ALL_ENDPOINT: string = '/game/all';
 export const GAME_FIND_BY_ID_ENDPOINT: string = '/game/get/';
 export const GAME_NEW_ENDPOINT: string = '/game/new';
 export const GAME_UPDATE_ENDPOINT: string = '/game/update/';
-
-// TODO: Extraer esto
-export const LOGIN_PAGE: string = 'login';
-export const HOME_PAGE: string = 'home';
-
 export const MOXFIELD_ENDPOINT: string = '/moxfield/';
 export const PLAYER_DELETE_ENDPOINT: string = '/player/delete/';
 export const PLAYER_FIND_ALL_ENDPOINT: string = '/player/all';
@@ -38,7 +35,7 @@ export const USER_UPDATE_ENDPOINT: string = '/user/update/';
 
 export function adminEndpoints(): string[] {
   return [
-    AUTHENTICATION_REGISTER,
+    AUTHENTICATION_REGISTER_ENDPOINT,
     DECK_DELETE_ENDPOINT,
     DECK_NEW_ENDPOINT,
     DECK_UPDATE_ENDPOINT,
@@ -57,15 +54,13 @@ export function adminEndpoints(): string[] {
     USER_FIND_ALL_ENDPOINT,
     USER_FIND_BY_ID_ENDPOINT,
     USER_NEW_ENDPOINT,
-    USER_UPDATE_ENDPOINT,
-
-    DECK_FIND_RANDOM_ENDPOINT,
+    USER_UPDATE_ENDPOINT
   ];
 }
 
 export function permittedEndpoints(): string[] {
   return [
-    AUTHENTICATION_LOGIN,
+    AUTHENTICATION_LOGIN_ENDPOINT,
     DECK_FIND_ALL_ENDPOINT,
     DECK_FIND_BY_ID_ENDPOINT,
     DECK_FIND_RANDOM_ENDPOINT,
