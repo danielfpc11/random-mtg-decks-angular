@@ -1,13 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription, tap } from 'rxjs';
-import { HOME_PAGE, LOGIN_SUCCESSFUL_ALERT, PASSWORD_FORM_CONTROL, TOKEN_KEY, USERNAME_FORM_CONTROL } from '../../constants';
+import { HOME_PAGE, LOGIN_SUCCESSFUL_ALERT, TOKEN_KEY } from '../../constants';
 import { Router } from '@angular/router';
-import { AuthenticationConnector } from '../../../../core/connectors';
-import { GlobalMessageService } from '../../../../core/services';
+import { AuthenticationConnector } from '../../../../core';
+import { GlobalMessageService } from '../../../../core';
 import { EMPTY_STRING } from '../../../../shared';
-import { Authentication } from '../../../../core/models';
-import { AlertType } from '../../../../core/enums';
+import { Authentication } from '../../../../core';
+import { AlertType } from '../../../../core';
+
+export const USERNAME_FORM_CONTROL: string = 'username';
+export const PASSWORD_FORM_CONTROL: string = 'password';
 
 @Component({
   selector: 'app-authentication-login',

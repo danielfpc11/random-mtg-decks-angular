@@ -33,8 +33,6 @@ export const USER_FIND_ALL_ENDPOINT: string = '/user/all';
 export const USER_FIND_BY_ID_ENDPOINT: string = '/user/get/';
 export const USER_NEW_ENDPOINT: string = '/user/new';
 export const USER_UPDATE_ENDPOINT: string = '/user/update/';
-export const USERNAME_FORM_CONTROL: string = 'username';
-export const PASSWORD_FORM_CONTROL: string = 'password';
 export const LOGIN_SUCCESSFUL_ALERT: string = 'globalMessage.authentication.login';
 export const REGISTER_SUCCESSFUL_ALERT: string = 'globalMessage.authentication.register';
 

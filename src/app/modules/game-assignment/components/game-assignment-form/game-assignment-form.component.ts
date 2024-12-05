@@ -7,6 +7,7 @@ import { GameUtils, PlayerUtils } from '../../utils';
 import { Router, UrlTree } from '@angular/router';
 import { Alert, AlertType, ClipboardService, Deck, DeckConnector, Game, GameConnector, GlobalMessageService } from '../../../../core';
 import { EMPTY_STRING, FormUtils, UrlUtils, ZERO_NUMBER } from '../../../../shared';
+import { ArrayUtils } from '../../../../shared/utils/array.utils';
 
 @Component({
   selector: 'game-assignment-form',
@@ -43,7 +44,7 @@ export class GameAssignmentFormComponent implements OnInit {
   }
 
   protected setDecks(): void {
-    if (this.game.players.length > ZERO_NUMBER) {
+    if (ArrayUtils.isNotEmpty(this.game.players)) {
       this.subscription.add(this.deckConnector
                                 .findRandomDecks(this.game.players.length)
                                 .pipe(
