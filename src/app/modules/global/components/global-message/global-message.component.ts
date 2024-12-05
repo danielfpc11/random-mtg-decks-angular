@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, switchMap, tap, timer } from 'rxjs';
+import { Alert, GlobalMessageService } from '../../../../core';
 import { DateUtils } from '../../utils';
-import { Alert, GlobalMessageService } from '../../../core';
 
 export const DEFAULT_ALERT_TIMEOUT: number = 10;
 

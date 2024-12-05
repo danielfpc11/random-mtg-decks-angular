@@ -15,5 +15,5 @@ import { GlobalMessageModule } from './global-message';
     NavbarModule
   ]
 })
-export class SharedComponentsModule {
+export class GlobalComponentsModule {
 }

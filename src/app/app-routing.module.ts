@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './shared';
 import { GameAssignmentFormComponent, GameAssignmentSavedGameComponent, GameAssignmentSavedGameListComponent } from './modules';
 import { AuthenticationLoginComponent } from './modules/authentication/components';
+import { HomeComponent } from './modules';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},

@@ -3,11 +3,10 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT, SAVED_GAME_ALERT_TIMEOUT, SAVED_GAME_ALERT_URL_COPIED, SAVED_GAME_URL } from '../../constants';
 import { GameAssignmentValidator } from '../../validators';
 import { map, merge, Observable, Subscription, switchMap, tap } from 'rxjs';
-import { GameUtils, PlayerUtils } from '../../utils';
+import { PlayerUtils } from '../../utils';
 import { Router, UrlTree } from '@angular/router';
 import { Alert, AlertType, ClipboardService, Deck, DeckConnector, Game, GameConnector, GlobalMessageService } from '../../../../core';
-import { FormUtils, UrlUtils } from '../../../../shared';
-import { ArrayUtils } from '../../../../shared/utils/array.utils';
+import { ArrayUtils, FormUtils, UrlUtils } from '../../../global';
 
 @Component({
   selector: 'game-assignment-form',
@@ -28,7 +27,7 @@ export class GameAssignmentFormComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.game = GameUtils.createNewGame();
+    this.game = {players: [], date: new Date()};
     this.playerForm = new FormGroup({
       name: new FormControl('')
     });

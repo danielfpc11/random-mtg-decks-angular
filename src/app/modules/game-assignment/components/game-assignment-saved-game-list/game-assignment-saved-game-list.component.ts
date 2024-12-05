@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DateUtils } from '../../../../shared';
 import { Game, GameConnector } from '../../../../core';
+import { DateUtils } from '../../../global';
 
 @Component({
   selector: 'game-assignment-saved-game-list',

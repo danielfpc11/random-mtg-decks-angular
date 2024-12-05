@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppI18nModule } from './app-i18n.module';
-import { SharedModule } from './shared';
-import { AuthenticationModule, GameAssignmentModule } from './modules';
+import { AuthenticationModule, GameAssignmentModule, GlobalModule } from './modules';
 import { HttpClientModule } from '@angular/common/http';
+import { CoreModule } from './core';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     AppI18nModule,
     HttpClientModule,
-    SharedModule,
+    CoreModule,
+    GlobalModule,
     AuthenticationModule,
     GameAssignmentModule
   ],
