@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../services';
-import { Authentication, User } from '../models';
+import { Authentication } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
-import { ErrorHandlerService } from '../../../shared';
+import { ErrorHandlerService, User } from '../../../shared';
 import { catchError, map } from 'rxjs';
 import { AuthenticationAdapter, UserAdapter } from '../adapters';
 
