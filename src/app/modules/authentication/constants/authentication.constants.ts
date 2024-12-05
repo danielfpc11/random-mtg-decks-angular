@@ -54,9 +54,7 @@ export function adminEndpoints(): string[] {
     USER_FIND_ALL_ENDPOINT,
     USER_FIND_BY_ID_ENDPOINT,
     USER_NEW_ENDPOINT,
-    USER_UPDATE_ENDPOINT,
-
-    DECK_FIND_RANDOM_ENDPOINT,
+    USER_UPDATE_ENDPOINT
   ];
 }
 
