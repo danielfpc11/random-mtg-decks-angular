@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { GAME_PLAYER_MIN, SAVED_GAME_URL } from '../../constants';
+import { GAME_PLAYER_MIN } from '../../constants';
 import { GameAssignmentValidator } from '../../validators';
 import { map, merge, Observable, Subscription, switchMap, tap } from 'rxjs';
 import { PlayerUtils } from '../../utils';
@@ -12,7 +12,19 @@ import {
   DeckConnector,
   Game,
   GAME_ASSIGNMENT_FORM_ADD,
-  GAME_ASSIGNMENT_FORM_CREATE_GAME, GAME_ASSIGNMENT_FORM_ERROR_MAX_LENGTH_PLAYER_NAME, GAME_ASSIGNMENT_FORM_ERROR_PLAYER_LIMIT_REACHED, GAME_ASSIGNMENT_FORM_ERROR_REPEATED_PLAYER_NAME, GAME_ASSIGNMENT_FORM_PLAYER_NAME, GAME_ASSIGNMENT_FORM_PLAYER_NAME_PLACEHOLDER, GAME_ASSIGNMENT_FORM_SAVE_GAME, GAME_ASSIGNMENT_FORM_SET_DECKS, GameConnector, GLOBAL_ALERT_GAME_URL_COPIED, GlobalMessageService } from '../../../../core';
+  GAME_ASSIGNMENT_FORM_CREATE_GAME,
+  GAME_ASSIGNMENT_FORM_ERROR_MAX_LENGTH_PLAYER_NAME,
+  GAME_ASSIGNMENT_FORM_ERROR_PLAYER_LIMIT_REACHED,
+  GAME_ASSIGNMENT_FORM_ERROR_REPEATED_PLAYER_NAME,
+  GAME_ASSIGNMENT_FORM_PLAYER_NAME,
+  GAME_ASSIGNMENT_FORM_PLAYER_NAME_PLACEHOLDER,
+  GAME_ASSIGNMENT_FORM_SAVE_GAME,
+  GAME_ASSIGNMENT_FORM_SET_DECKS,
+  GameConnector,
+  GLOBAL_ALERT_GAME_URL_COPIED,
+  GlobalMessageService,
+  SAVED_GAME_PAGE
+} from '../../../../core';
 import { ArrayUtils, FormUtils, UrlUtils } from '../../../global';
 
 @Component({
@@ -81,7 +93,7 @@ export class GameAssignmentFormComponent implements OnInit {
       this.subscription.add(this.gameConnector
                                 .saveNewGame(this.game)
                                 .pipe(
-                                  map((gameId: number): UrlTree => this.router.createUrlTree([SAVED_GAME_URL, gameId])),
+                                  map((gameId: number): UrlTree => this.router.createUrlTree([SAVED_GAME_PAGE, gameId])),
                                   switchMap((savedGameUrlTree: UrlTree) => this.copyAndNavigateUrlObservable(savedGameUrlTree)),
                                   tap(() => this.globalMessageService.sendMessage({
                                     alertType: AlertType.SUCCESS,

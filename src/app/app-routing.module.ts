@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GameAssignmentFormComponent, GameAssignmentSavedGameComponent, GameAssignmentSavedGameListComponent } from './modules';
-import { AuthenticationLoginComponent } from './modules/authentication/components';
-import { HomeComponent } from './modules';
+import { AuthenticationLoginComponent, GameAssignmentFormComponent, GameAssignmentSavedGameComponent, GameAssignmentSavedGameListComponent, HomeComponent } from './modules';
+import { CREATE_GAME_PAGE, HOME_PAGE, LOGIN_PAGE, SAVED_GAME_PAGE, SAVED_GAMES_PAGE } from './core';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
-  {path: 'create-game', component: GameAssignmentFormComponent},
-  {path: 'login', component: AuthenticationLoginComponent},
-  {path: 'saved-games', component: GameAssignmentSavedGameListComponent},
-  {path: 'saved-game/:gameId', component: GameAssignmentSavedGameComponent}
+  {path: '', redirectTo: HOME_PAGE, pathMatch: 'full'},
+  {path: HOME_PAGE, component: HomeComponent},
+  {path: CREATE_GAME_PAGE, component: GameAssignmentFormComponent},
+  {path: LOGIN_PAGE, component: AuthenticationLoginComponent},
+  {path: SAVED_GAMES_PAGE, component: GameAssignmentSavedGameListComponent},
+  {path: SAVED_GAME_PAGE, component: GameAssignmentSavedGameComponent}
 ];
 
 @NgModule({

@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription, tap } from 'rxjs';
-import { HOME_PAGE, TOKEN_KEY } from '../../constants';
+import { TOKEN_KEY } from '../../constants';
 import { Router } from '@angular/router';
-import { AlertType, Authentication, AuthenticationConnector, GlobalMessageService } from '../../../../core';
+import { AlertType, Authentication, AuthenticationConnector, GlobalMessageService, HOME_PAGE } from '../../../../core';
 import { AUTHENTICATION_FORM_LOGIN, AUTHENTICATION_FORM_PASSWORD, AUTHENTICATION_FORM_USERNAME, GLOBAL_ALERT_AUTHENTICATION_LOGIN } from '../../../../core';
 
 @Component({

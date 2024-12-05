@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Observable, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LOGIN_PAGE } from '../constants';
+import { LOGIN_PAGE } from '../../../core';
 
 @Injectable({
   providedIn: 'root'
