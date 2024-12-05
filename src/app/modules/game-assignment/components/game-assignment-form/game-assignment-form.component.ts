@@ -6,7 +6,7 @@ import { map, merge, Observable, Subscription, switchMap, tap } from 'rxjs';
 import { GameUtils, PlayerUtils } from '../../utils';
 import { Router, UrlTree } from '@angular/router';
 import { Alert, AlertType, ClipboardService, Deck, DeckConnector, Game, GameConnector, GlobalMessageService } from '../../../../core';
-import { EMPTY_STRING, FormUtils, UrlUtils, ZERO_NUMBER } from '../../../../shared';
+import { FormUtils, UrlUtils } from '../../../../shared';
 import { ArrayUtils } from '../../../../shared/utils/array.utils';
 
 @Component({
@@ -30,7 +30,7 @@ export class GameAssignmentFormComponent implements OnInit {
   public ngOnInit(): void {
     this.game = GameUtils.createNewGame();
     this.playerForm = new FormGroup({
-      name: new FormControl(EMPTY_STRING)
+      name: new FormControl('')
     });
     this.updateNameFormControlValidation();
   }
@@ -73,7 +73,7 @@ export class GameAssignmentFormComponent implements OnInit {
 
   protected isValidGame(): boolean {
     return this.game.players.length >= GAME_PLAYER_MIN
-           && PlayerUtils.getPlayersWithNoDecks(this.game.players).length == ZERO_NUMBER;
+           && ArrayUtils.isEmpty(PlayerUtils.getPlayersWithNoDecks(this.game.players));
   }
 
   protected updateNameFormControlValidation(): void {

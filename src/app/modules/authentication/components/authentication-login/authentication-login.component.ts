@@ -3,11 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { Subscription, tap } from 'rxjs';
 import { HOME_PAGE, LOGIN_SUCCESSFUL_ALERT, TOKEN_KEY } from '../../constants';
 import { Router } from '@angular/router';
-import { AuthenticationConnector } from '../../../../core';
-import { GlobalMessageService } from '../../../../core';
-import { EMPTY_STRING } from '../../../../shared';
-import { Authentication } from '../../../../core';
-import { AlertType } from '../../../../core';
+import { AlertType, Authentication, AuthenticationConnector, GlobalMessageService } from '../../../../core';
 
 export const USERNAME_FORM_CONTROL: string = 'username';
 export const PASSWORD_FORM_CONTROL: string = 'password';
@@ -29,8 +25,8 @@ export class AuthenticationLoginComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.userForm = new FormGroup({
-      username: new FormControl(EMPTY_STRING, [Validators.required]),
-      password: new FormControl(EMPTY_STRING, [Validators.required])
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     });
   }
 

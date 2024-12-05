@@ -1,5 +1,4 @@
 import { GAME_PLAYER_LIMIT } from '../constants';
-import { ZERO_NUMBER } from '../../../shared';
 import { Deck, Player } from '../../../core';
 
 export class PlayerUtils {
@@ -26,7 +25,7 @@ export class PlayerUtils {
 
   public static forcePlayerLimit(players: Player[]): Player[] {
     return players.length > GAME_PLAYER_LIMIT
-           ? players.slice(ZERO_NUMBER, GAME_PLAYER_LIMIT)
+           ? players.slice(0, GAME_PLAYER_LIMIT)
            : players;
   }
 
