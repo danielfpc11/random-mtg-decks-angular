@@ -1,4 +1,12 @@
 {
+  "authentication": {
+    "form": {
+      "username": "Nombre de usuario",
+      "password": "Contraseña",
+      "login": "Iniciar sesión",
+      "register": "Registro"
+    }
+  },
   "gameAssignment": {
     "form": {
       "add": "Añadir",
@@ -26,7 +34,11 @@
     }
   },
   "globalMessage": {
-    "gameUrlCopied": "El URL de la partida se ha copiado en el portapapeles."
+    "gameUrlCopied": "El URL de la partida se ha copiado en el portapapeles.",
+    "authentication": {
+      "login": "Bienvenido de nuevo {{value}}.",
+      "register": "Te has registrado correctamente, ¡bienvenido {{value}}!"
+    }
   },
   "home": {
     "startNewGame": "¡Empezar nueva partida!"

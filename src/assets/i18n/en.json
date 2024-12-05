@@ -1,4 +1,12 @@
 {
+  "authentication": {
+    "form": {
+      "username": "Username",
+      "password": "Password",
+      "login": "Login",
+      "register": "Register"
+    }
+  },
   "gameAssignment": {
     "form": {
       "add": "Add",
@@ -26,7 +34,11 @@
     }
   },
   "globalMessage": {
-    "gameUrlCopied": "Game URL has been copied to the clipboard."
+    "gameUrlCopied": "Game URL has been copied to the clipboard.",
+    "authentication": {
+      "login": "Welcome again {{value}}.",
+      "register": "You have been successfully registered, welcome aboard {{value}}!"
+    }
   },
   "home": {
     "startNewGame": "Start new game!"
