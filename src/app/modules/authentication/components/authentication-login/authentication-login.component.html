@@ -2,18 +2,18 @@
   <form [formGroup]="userForm" (ngSubmit)="login()">
     <div class="form-control">
       <label>
-        {{ 'authentication.form.username' | translate }}
+        {{ AUTHENTICATION_FORM_USERNAME | translate }}
       </label>
       <input id="username" type="text" formControlName="username">
     </div>
     <div class="form-control">
       <label>
-        {{ 'authentication.form.password' | translate }}
+        {{ AUTHENTICATION_FORM_PASSWORD | translate }}
       </label>
       <input id="password" type="password" formControlName="password">
     </div>
     <button type="submit">
-      {{ 'authentication.form.login' | translate }}
+      {{ AUTHENTICATION_FORM_LOGIN | translate }}
     </button>
   </form>
 </main>

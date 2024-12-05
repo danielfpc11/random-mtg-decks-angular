@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateCacheModule, TranslateCacheService, TranslateCacheSettings } from 'ngx-translate-cache';
-import { ENGLISH_LANGUAGE } from './shared';
+import { ENGLISH_LANGUAGE } from './core';
 
 @NgModule({
   imports: [

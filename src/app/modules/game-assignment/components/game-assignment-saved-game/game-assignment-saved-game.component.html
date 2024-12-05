@@ -2,7 +2,7 @@
   <section>
     <ng-container *ngIf="game$ | async; let game">
       <h1>
-        {{ 'gameAssignment.savedGame.game' | translate: {gameId: game.id} }}
+        {{ GAME_ASSIGNMENT_SAVED_GAME_GAME | translate: {gameId: game.id} }}
       </h1>
       <p>
         {{ DateUtils.formatDate(game.date) }}

@@ -1,11 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthenticationConnector } from '../../connectors';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlertType, EMPTY_STRING, GlobalMessageService } from '../../../../shared';
 import { Subscription, tap } from 'rxjs';
-import { HOME_PAGE, LOGIN_SUCCESSFUL_ALERT, PASSWORD_FORM_CONTROL, TOKEN_KEY, USERNAME_FORM_CONTROL } from '../../constants';
-import { Authentication } from '../../models';
+import { TOKEN_KEY } from '../../constants';
 import { Router } from '@angular/router';
+import {
+  AlertType,
+  Authentication,
+  AUTHENTICATION_FORM_LOGIN,
+  AUTHENTICATION_FORM_PASSWORD,
+  AUTHENTICATION_FORM_USERNAME,
+  AuthenticationConnector,
+  GLOBAL_ALERT_AUTHENTICATION_LOGIN,
+  GlobalMessageService,
+  HOME_PAGE
+} from '../../../../core';
 
 @Component({
   selector: 'app-authentication-login',
@@ -16,6 +24,9 @@ export class AuthenticationLoginComponent implements OnInit, OnDestroy {
 
   protected userForm!: FormGroup;
   protected subscription: Subscription = new Subscription();
+  protected readonly AUTHENTICATION_FORM_PASSWORD = AUTHENTICATION_FORM_PASSWORD;
+  protected readonly AUTHENTICATION_FORM_USERNAME = AUTHENTICATION_FORM_USERNAME;
+  protected readonly AUTHENTICATION_FORM_LOGIN = AUTHENTICATION_FORM_LOGIN;
 
   constructor(protected authenticationConnector: AuthenticationConnector,
               protected globalMessageService: GlobalMessageService,
@@ -24,8 +35,8 @@ export class AuthenticationLoginComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.userForm = new FormGroup({
-      username: new FormControl(EMPTY_STRING, [Validators.required]),
-      password: new FormControl(EMPTY_STRING, [Validators.required])
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     });
   }
 
@@ -48,18 +59,18 @@ export class AuthenticationLoginComponent implements OnInit, OnDestroy {
   }
 
   protected getUsernameFormControl(): AbstractControl<any, any> | null {
-    return this.userForm.get(USERNAME_FORM_CONTROL);
+    return this.userForm.get('username');
   }
 
   protected getPasswordFormControl(): AbstractControl<any, any> | null {
-    return this.userForm.get(PASSWORD_FORM_CONTROL);
+    return this.userForm.get('password');
   }
 
   private storeTokenAndRedirectHome(authentication: Authentication): void {
     localStorage.setItem(TOKEN_KEY, authentication.token);
     this.globalMessageService.sendMessage({
       alertType: AlertType.SUCCESS,
-      message: LOGIN_SUCCESSFUL_ALERT,
+      message: GLOBAL_ALERT_AUTHENTICATION_LOGIN,
       value: authentication.username
     });
     void this.router.navigate([HOME_PAGE]);

@@ -12,7 +12,6 @@
       "add": "Añadir",
       "setDecks": "Generar Mazos",
       "createGame": "Crear Partida",
-      "history": "Historial",
       "playerName": "Nombre del Jugador",
       "playerNamePlaceholder": "Introduce el nombre del jugador",
       "saveGame": "Guardar Partida",
@@ -33,19 +32,21 @@
       "players": "Jugadores"
     }
   },
-  "globalMessage": {
-    "gameUrlCopied": "El URL de la partida se ha copiado en el portapapeles.",
-    "authentication": {
-      "login": "Bienvenido de nuevo {{value}}.",
-      "register": "Te has registrado correctamente, ¡bienvenido {{value}}!"
+  "global": {
+    "globalMessage": {
+      "gameUrlCopied": "El URL de la partida se ha copiado en el portapapeles.",
+      "authentication": {
+        "login": "Bienvenido de nuevo {{value}}.",
+        "register": "Te has registrado correctamente, ¡bienvenido {{value}}!"
+      }
+    },
+    "home": {
+      "startNewGame": "¡Empezar nueva partida!"
+    },
+    "navbar": {
+      "brand": "RMD",
+      "createGame": "Crear Partida",
+      "savedGames": "Partidas Guardadas"
     }
-  },
-  "home": {
-    "startNewGame": "¡Empezar nueva partida!"
-  },
-  "navbar": {
-    "brand": "RMD",
-    "createGame": "Crear Partida",
-    "savedGames": "Partidas Guardadas"
   }
 }

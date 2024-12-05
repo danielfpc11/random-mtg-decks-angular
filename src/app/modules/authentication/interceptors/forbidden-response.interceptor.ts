@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Observable, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { FORBIDDEN_STATUS_CODE, LOGIN_PAGE } from '../constants';
+import { LOGIN_PAGE } from '../../../core';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +16,13 @@ export class ForbiddenResponseInterceptor implements HttpInterceptor {
     return next.handle(req)
                .pipe(
                  tap({
-                   error: (httpErrorResponse: HttpErrorResponse): void => this.handleForbiddenErrorResponse(httpErrorResponse.status)
+                   error: (httpErrorResponse: HttpErrorResponse): void => {
+                     if (httpErrorResponse.status === 403) {
+                       void this.router.navigate([LOGIN_PAGE]);
+                     }
+                   }
                  })
                );
-  }
-
-  private handleForbiddenErrorResponse(status: number) {
-    if (status === FORBIDDEN_STATUS_CODE) {
-      void this.router.navigate([LOGIN_PAGE]);
-    }
   }
 
 }

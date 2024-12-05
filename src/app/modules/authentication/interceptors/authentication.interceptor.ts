@@ -1,8 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { filter, Observable, of, Subscription, tap } from 'rxjs';
 import { Injectable, OnDestroy } from '@angular/core';
-import { AUTHORIZATION_HEADER, TOKEN_KEY, TOKEN_PREFIX } from '../constants';
-import { AuthenticationUtils } from '../utils';
+import { adminEndpoints, AUTHORIZATION_HEADER, TOKEN_KEY, TOKEN_PREFIX } from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +27,7 @@ export class AuthenticationInterceptor implements HttpInterceptor, OnDestroy {
   }
 
   private isAuthenticatedUrl(url: string): boolean {
-    return AuthenticationUtils.adminEndpoints()
-                              .some((authenticatedUrl: string): boolean => new RegExp(authenticatedUrl).test(url));
+    return adminEndpoints().some((authenticatedUrl: string): boolean => new RegExp(authenticatedUrl).test(url));
   }
 
   private addAuthorizationHeader(request: HttpRequest<any>, token: string): HttpRequest<any> {
