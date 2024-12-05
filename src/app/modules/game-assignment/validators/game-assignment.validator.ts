@@ -1,7 +1,7 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Player } from '../models';
 import { PlayerUtils } from '../utils';
 import { GAME_PLAYER_LIMIT } from '../constants';
+import { Player } from '../../../core';
 
 export class GameAssignmentValidator {
 

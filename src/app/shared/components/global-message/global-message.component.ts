@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { GlobalMessageService } from '../../services';
 import { Observable, Subscription, switchMap, tap, timer } from 'rxjs';
-import { Alert } from '../../models';
 import { DEFAULT_ALERT_TIMEOUT } from '../../constants';
 import { DateUtils } from '../../utils';
+import { Alert, GlobalMessageService } from '../../../core';
 
 @Component({
   selector: 'global-message',

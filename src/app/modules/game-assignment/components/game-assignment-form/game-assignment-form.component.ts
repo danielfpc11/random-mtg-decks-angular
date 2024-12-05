@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Alert, AlertType, ClipboardService, EMPTY_STRING, FormUtils, GlobalMessageService, UrlUtils, ZERO_NUMBER } from '../../../../shared';
-import { Deck, Game } from '../../models';
 import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT, SAVED_GAME_ALERT_TIMEOUT, SAVED_GAME_ALERT_URL_COPIED, SAVED_GAME_URL } from '../../constants';
 import { GameAssignmentValidator } from '../../validators';
 import { map, merge, Observable, Subscription, switchMap, tap } from 'rxjs';
 import { GameUtils, PlayerUtils } from '../../utils';
-import { DeckConnector, GameConnector } from '../../connectors';
 import { Router, UrlTree } from '@angular/router';
+import { Alert, AlertType, ClipboardService, Deck, DeckConnector, Game, GameConnector, GlobalMessageService } from '../../../../core';
+import { EMPTY_STRING, FormUtils, UrlUtils, ZERO_NUMBER } from '../../../../shared';
 
 @Component({
   selector: 'game-assignment-form',

@@ -7,7 +7,7 @@ import {
   DefaultGlobalMessageService,
   ErrorHandlerService,
   GlobalMessageService
-} from './services';
+} from '../core';
 
 @NgModule({
   providers: [

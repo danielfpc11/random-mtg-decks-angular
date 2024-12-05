@@ -1,4 +1,4 @@
-import { Game } from '../models';
+import { Game } from '../../../core';
 
 export class GameUtils {
 

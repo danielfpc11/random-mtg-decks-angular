@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable, switchMap } from 'rxjs';
-import { Game } from '../../models';
 import { ActivatedRoute, Params } from '@angular/router';
-import { GameConnector } from '../../connectors';
 import { GAME_ID_PARAM } from '../../constants';
 import { DateUtils } from '../../../../shared';
+import { Game, GameConnector } from '../../../../core';
 
 @Component({
   selector: 'game-assignment-saved-game',

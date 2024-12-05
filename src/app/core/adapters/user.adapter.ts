@@ -1,4 +1,4 @@
-import { User } from '../../../shared';
+import { User } from '../models';
 
 export class UserAdapter {
 

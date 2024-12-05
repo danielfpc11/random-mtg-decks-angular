@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PlayerService } from '../services';
-import { ErrorHandlerService } from '../../../shared';
+import { ErrorHandlerService, PlayerService } from '../services';
 import { catchError, map, Observable } from 'rxjs';
 import { Player } from '../models';
 import { PlayerAdapter } from '../adapters';

@@ -7,7 +7,7 @@ import {
   DefaultPlayerService,
   GameService,
   PlayerService
-} from './services';
+} from '../../core';
 
 @NgModule({
   imports: [

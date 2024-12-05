@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { AuthenticationType } from '../enums';
-import { Authentication } from '../models';
-import { AUTHENTICATION_URL } from '../constants';
-import { User } from '../../../shared';
+import { Authentication, User } from '../../models';
+import { AuthenticationType } from '../../enums';
+import { AUTHENTICATION_URL } from '../../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +21,7 @@ export class DefaultAuthenticationService implements AuthenticationService {
   public register(user: User): Observable<Authentication> {
     return this.sendRequest(user, AuthenticationType.REGISTER);
   }
+
 
   private sendRequest(user: User, authenticationType: AuthenticationType): Observable<Authentication> {
     return this.httpClient.post<Authentication>(`${AUTHENTICATION_URL}/${authenticationType}`, user);

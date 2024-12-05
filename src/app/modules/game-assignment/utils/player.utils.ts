@@ -1,6 +1,6 @@
-import { Deck, Player } from '../models';
 import { GAME_PLAYER_LIMIT } from '../constants';
 import { ZERO_NUMBER } from '../../../shared';
+import { Deck, Player } from '../../../core';
 
 export class PlayerUtils {
 

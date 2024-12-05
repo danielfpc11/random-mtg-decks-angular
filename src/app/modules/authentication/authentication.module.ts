@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AuthenticationService, DefaultAuthenticationService } from './services';
+import { AuthenticationService, DefaultAuthenticationService } from '../../core';
 import { AuthenticationInterceptor, ForbiddenResponseInterceptor } from './interceptors';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticationComponentsModule } from './components';

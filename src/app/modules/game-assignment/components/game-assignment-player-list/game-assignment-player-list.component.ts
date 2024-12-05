@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Game } from '../../models';
-import { ClipboardService } from '../../../../shared';
 import { Subscription } from 'rxjs';
 import { PlayerUtils } from '../../utils';
+import { ClipboardService, Game } from '../../../../core';
 
 @Component({
   selector: 'game-assignment-player-list',
