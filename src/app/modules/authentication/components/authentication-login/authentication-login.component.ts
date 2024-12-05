@@ -1,12 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription, tap } from 'rxjs';
-import { HOME_PAGE, LOGIN_SUCCESSFUL_ALERT, TOKEN_KEY } from '../../constants';
+import { HOME_PAGE, TOKEN_KEY } from '../../constants';
 import { Router } from '@angular/router';
 import { AlertType, Authentication, AuthenticationConnector, GlobalMessageService } from '../../../../core';
-
-export const USERNAME_FORM_CONTROL: string = 'username';
-export const PASSWORD_FORM_CONTROL: string = 'password';
+import { AUTHENTICATION_FORM_LOGIN, AUTHENTICATION_FORM_PASSWORD, AUTHENTICATION_FORM_USERNAME, GLOBAL_ALERT_AUTHENTICATION_LOGIN } from '../../../../core';
 
 @Component({
   selector: 'app-authentication-login',
@@ -17,6 +15,9 @@ export class AuthenticationLoginComponent implements OnInit, OnDestroy {
 
   protected userForm!: FormGroup;
   protected subscription: Subscription = new Subscription();
+  protected readonly AUTHENTICATION_FORM_PASSWORD = AUTHENTICATION_FORM_PASSWORD;
+  protected readonly AUTHENTICATION_FORM_USERNAME = AUTHENTICATION_FORM_USERNAME;
+  protected readonly AUTHENTICATION_FORM_LOGIN = AUTHENTICATION_FORM_LOGIN;
 
   constructor(protected authenticationConnector: AuthenticationConnector,
               protected globalMessageService: GlobalMessageService,
@@ -49,18 +50,18 @@ export class AuthenticationLoginComponent implements OnInit, OnDestroy {
   }
 
   protected getUsernameFormControl(): AbstractControl<any, any> | null {
-    return this.userForm.get(USERNAME_FORM_CONTROL);
+    return this.userForm.get('username');
   }
 
   protected getPasswordFormControl(): AbstractControl<any, any> | null {
-    return this.userForm.get(PASSWORD_FORM_CONTROL);
+    return this.userForm.get('password');
   }
 
   private storeTokenAndRedirectHome(authentication: Authentication): void {
     localStorage.setItem(TOKEN_KEY, authentication.token);
     this.globalMessageService.sendMessage({
       alertType: AlertType.SUCCESS,
-      message: LOGIN_SUCCESSFUL_ALERT,
+      message: GLOBAL_ALERT_AUTHENTICATION_LOGIN,
       value: authentication.username
     });
     void this.router.navigate([HOME_PAGE]);

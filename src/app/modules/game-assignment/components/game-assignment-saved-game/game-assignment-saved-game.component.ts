@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { map, Observable, switchMap } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GAME_ID_PARAM } from '../../constants';
-import { Game, GameConnector } from '../../../../core';
+import { Game, GAME_ASSIGNMENT_SAVED_GAME_GAME, GameConnector } from '../../../../core';
 import { DateUtils } from '../../../global';
 
 @Component({
@@ -14,6 +14,7 @@ export class GameAssignmentSavedGameComponent implements OnInit {
 
   protected game$!: Observable<Game>;
   protected readonly DateUtils = DateUtils;
+  protected readonly GAME_ASSIGNMENT_SAVED_GAME_GAME = GAME_ASSIGNMENT_SAVED_GAME_GAME;
 
   constructor(protected activatedRoute: ActivatedRoute,
               protected gameConnector: GameConnector) {

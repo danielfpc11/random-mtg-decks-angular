@@ -1,9 +1,9 @@
 <nav>
   <div id="brand-container" class="container">
-    <a [routerLink]="['/home']" id="brand">{{ 'navbar.brand' | translate }}</a>
+    <a [routerLink]="['/home']" id="brand">{{ GLOBAL_NAVBAR_BRAND | translate }}</a>
   </div>
   <div id="navbar-links-container" class="container">
-    <a [routerLink]="['/create-game']" class="navbar-link">{{ 'navbar.createGame' | translate }}</a>
-    <a [routerLink]="['/saved-games']" class="navbar-link">{{ 'navbar.savedGames' | translate }}</a>
+    <a [routerLink]="['/create-game']" class="navbar-link">{{ GLOBAL_NAVBAR_CREATE_GAME | translate }}</a>
+    <a [routerLink]="['/saved-games']" class="navbar-link">{{ GLOBAL_NAVBAR_SAVED_GAMES | translate }}</a>
   </div>
 </nav>

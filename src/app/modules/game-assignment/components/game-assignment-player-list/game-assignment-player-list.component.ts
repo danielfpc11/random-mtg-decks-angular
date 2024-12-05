@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PlayerUtils } from '../../utils';
-import { ClipboardService, Game } from '../../../../core';
+import { ClipboardService, Game, GAME_ASSIGNMENT_PLAYER_LIST_NO_PLAYERS } from '../../../../core';
 
 @Component({
   selector: 'game-assignment-player-list',
@@ -14,6 +14,7 @@ export class GameAssignmentPlayerListComponent implements OnInit, OnDestroy {
   @Input() public deleteButton!: boolean;
   @Output() public deletePlayerEventEmitter = new EventEmitter<string>();
   protected subscription: Subscription = new Subscription();
+  protected readonly GAME_ASSIGNMENT_PLAYER_LIST_NO_PLAYERS = GAME_ASSIGNMENT_PLAYER_LIST_NO_PLAYERS;
 
   constructor(protected clipboardService: ClipboardService) {
   }
