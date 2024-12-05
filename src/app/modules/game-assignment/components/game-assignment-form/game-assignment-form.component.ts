@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, PLAYER_NAME_LIMIT, SAVED_GAME_ALERT_TIMEOUT, SAVED_GAME_ALERT_URL_COPIED, SAVED_GAME_URL } from '../../constants';
+import { GAME_PLAYER_MIN, NAME_FORM_CONTROL, SAVED_GAME_ALERT_TIMEOUT, SAVED_GAME_ALERT_URL_COPIED, SAVED_GAME_URL } from '../../constants';
 import { GameAssignmentValidator } from '../../validators';
 import { map, merge, Observable, Subscription, switchMap, tap } from 'rxjs';
 import { PlayerUtils } from '../../utils';
 import { Router, UrlTree } from '@angular/router';
-import { Alert, AlertType, ClipboardService, Deck, DeckConnector, Game, GameConnector, GlobalMessageService } from '../../../../core';
+import { AlertType, ClipboardService, Deck, DeckConnector, Game, GameConnector, GlobalMessageService } from '../../../../core';
 import { ArrayUtils, FormUtils, UrlUtils } from '../../../global';
 
 @Component({
@@ -64,7 +64,11 @@ export class GameAssignmentFormComponent implements OnInit {
                                 .pipe(
                                   map((gameId: number): UrlTree => this.router.createUrlTree([SAVED_GAME_URL, gameId])),
                                   switchMap((savedGameUrlTree: UrlTree) => this.copyAndNavigateUrlObservable(savedGameUrlTree)),
-                                  tap(() => this.globalMessageService.sendMessage(this.urlCopiedAlert()))
+                                  tap(() => this.globalMessageService.sendMessage({
+                                    alertType: AlertType.SUCCESS,
+                                    message: SAVED_GAME_ALERT_URL_COPIED,
+                                    timeout: SAVED_GAME_ALERT_TIMEOUT
+                                  }))
                                 )
                                 .subscribe());
     }
@@ -79,7 +83,7 @@ export class GameAssignmentFormComponent implements OnInit {
     FormUtils.updateFormControlValidation(this.getNameFormControl(),
                                           [GameAssignmentValidator.repeatedPlayerName(this.game.players),
                                            GameAssignmentValidator.playerLimit(this.game.players),
-                                           Validators.maxLength(PLAYER_NAME_LIMIT),
+                                           Validators.maxLength(10),
                                            Validators.required]);
   }
 
@@ -88,14 +92,6 @@ export class GameAssignmentFormComponent implements OnInit {
       this.clipboardService.copyToClipboard(UrlUtils.createUrlWithOrigin(urlTree.toString())),
       this.router.navigateByUrl(urlTree)
     );
-  }
-
-  private urlCopiedAlert(): Alert {
-    return {
-      alertType: AlertType.SUCCESS,
-      message: SAVED_GAME_ALERT_URL_COPIED,
-      timeout: SAVED_GAME_ALERT_TIMEOUT
-    };
   }
 
 }

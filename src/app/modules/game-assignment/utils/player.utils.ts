@@ -8,7 +8,7 @@ export class PlayerUtils {
   }
 
   public static getPlayersWithNoDecks(players: Player[]): Player[] {
-    return players.filter((player: Player): boolean => player.deck === undefined);
+    return players.filter((player: Player): boolean => !player.deck);
   }
 
   public static getPlayersNames(players: Player[]): string[] {
