@@ -1,5 +1,3 @@
-import { isEmpty } from 'rxjs';
-
 export class ArrayUtils {
 
   public static isEmpty(array: any[]) {
@@ -7,7 +5,7 @@ export class ArrayUtils {
   }
 
   public static isNotEmpty(array: any[]) {
-    return !isEmpty();
+    return !this.isEmpty(array);
   }
 
 }
