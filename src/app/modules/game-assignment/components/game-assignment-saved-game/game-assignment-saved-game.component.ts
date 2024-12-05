@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable, switchMap } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
-import { GAME_ID_PARAM } from '../../constants';
-import { Game, GAME_ASSIGNMENT_SAVED_GAME_GAME, GameConnector } from '../../../../core';
+import { Game, GAME_ASSIGNMENT_SAVED_GAME_GAME, GAME_ID_PARAM, GameConnector } from '../../../../core';
 import { DateUtils } from '../../../global';
 
 @Component({
