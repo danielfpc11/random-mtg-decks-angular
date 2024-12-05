@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Authentication, User } from '../../models';
 import { AuthenticationType } from '../../enums';
-import { AUTHENTICATION_URL } from '../../constants';
+import { environment } from '../../../../environments/environment';
+
+export const AUTHENTICATION_URL: string = `${environment.serverUrl}/authentication`;
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,9 @@ import { Observable } from 'rxjs';
 import { Deck } from '../../models';
 import { HttpClient } from '@angular/common/http';
 import { DeckService } from './deck.service';
-import { DECK_URL } from '../../constants';
+import { environment } from '../../../../environments/environment';
+
+export const DECK_URL: string = `${environment.serverUrl}/deck`;
 
 @Injectable({
   providedIn: 'root'

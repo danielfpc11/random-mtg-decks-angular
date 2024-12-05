@@ -3,7 +3,9 @@ import { GameService } from './game.service';
 import { Observable } from 'rxjs';
 import { Game } from '../../models';
 import { HttpClient } from '@angular/common/http';
-import { GAME_URL } from '../../constants';
+import { environment } from '../../../../environments/environment';
+
+export const GAME_URL: string = `${environment.serverUrl}/game`;
 
 @Injectable({
   providedIn: 'root'
