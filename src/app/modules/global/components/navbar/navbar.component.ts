@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { CREATE_GAME_PAGE, GLOBAL_NAVBAR_BRAND, GLOBAL_NAVBAR_CREATE_GAME, GLOBAL_NAVBAR_SAVED_GAMES, HOME_PAGE, SAVED_GAMES_PAGE } from '../../../../core';
+import {
+  CREATE_GAME_PAGE,
+  GLOBAL_NAVBAR_BRAND,
+  GLOBAL_NAVBAR_CREATE_GAME,
+  GLOBAL_NAVBAR_SAVED_GAMES,
+  HOME_PAGE,
+  SAVED_GAMES_PAGE
+} from '../../../../core';
 
 @Component({
   selector: 'navbar',

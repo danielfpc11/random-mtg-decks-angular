@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationLoginComponent, GameAssignmentFormComponent, GameAssignmentSavedGameComponent, GameAssignmentSavedGameListComponent, HomeComponent } from './modules';
+import {
+  AuthenticationLoginComponent,
+  GameAssignmentFormComponent,
+  GameAssignmentSavedGameComponent,
+  GameAssignmentSavedGameListComponent,
+  HomeComponent
+} from './modules';
 import { CREATE_GAME_PAGE, HOME_PAGE, LOGIN_PAGE, SAVED_GAME_PAGE_GAME_ID, SAVED_GAMES_PAGE } from './core';
 
 const routes: Routes = [

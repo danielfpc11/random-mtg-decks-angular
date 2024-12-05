@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Game, GAME_ASSIGNMENT_SAVED_GAME_LIST_DATE, GAME_ASSIGNMENT_SAVED_GAME_LIST_PLAYERS, GameConnector } from '../../../../core';
+import {
+  Game,
+  GAME_ASSIGNMENT_SAVED_GAME_LIST_DATE,
+  GAME_ASSIGNMENT_SAVED_GAME_LIST_PLAYERS,
+  GameConnector
+} from '../../../../core';
 import { DateUtils } from '../../../global';
 
 @Component({

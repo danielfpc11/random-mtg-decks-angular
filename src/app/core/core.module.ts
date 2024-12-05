@@ -1,5 +1,20 @@
 import { NgModule } from '@angular/core';
-import { AuthenticationService, ClipboardService, DeckService, DefaultAuthenticationService, DefaultClipboardService, DefaultDeckService, DefaultErrorHandlerService, DefaultGameService, DefaultGlobalMessageService, DefaultPlayerService, ErrorHandlerService, GameService, GlobalMessageService, PlayerService } from './services';
+import {
+  AuthenticationService,
+  ClipboardService,
+  DeckService,
+  DefaultAuthenticationService,
+  DefaultClipboardService,
+  DefaultDeckService,
+  DefaultErrorHandlerService,
+  DefaultGameService,
+  DefaultGlobalMessageService,
+  DefaultPlayerService,
+  ErrorHandlerService,
+  GameService,
+  GlobalMessageService,
+  PlayerService
+} from './services';
 
 @NgModule({
   providers: [

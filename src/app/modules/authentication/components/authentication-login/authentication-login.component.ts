@@ -3,8 +3,17 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { Subscription, tap } from 'rxjs';
 import { TOKEN_KEY } from '../../constants';
 import { Router } from '@angular/router';
-import { AlertType, Authentication, AuthenticationConnector, GlobalMessageService, HOME_PAGE } from '../../../../core';
-import { AUTHENTICATION_FORM_LOGIN, AUTHENTICATION_FORM_PASSWORD, AUTHENTICATION_FORM_USERNAME, GLOBAL_ALERT_AUTHENTICATION_LOGIN } from '../../../../core';
+import {
+  AlertType,
+  Authentication,
+  AUTHENTICATION_FORM_LOGIN,
+  AUTHENTICATION_FORM_PASSWORD,
+  AUTHENTICATION_FORM_USERNAME,
+  AuthenticationConnector,
+  GLOBAL_ALERT_AUTHENTICATION_LOGIN,
+  GlobalMessageService,
+  HOME_PAGE
+} from '../../../../core';
 
 @Component({
   selector: 'app-authentication-login',
