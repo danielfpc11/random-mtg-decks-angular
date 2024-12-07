@@ -58,6 +58,7 @@ export class AuthenticationLoginComponent implements OnInit, OnDestroy {
     this.globalMessageService.sendMessage({
       alertType: AlertType.SUCCESS,
       message: 'global.globalMessage.authentication.login',
+      timeout: 5,
       value: authentication.username
     });
     void this.router.navigate([HOME_PAGE]);
