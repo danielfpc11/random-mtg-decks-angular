@@ -1,4 +1,4 @@
-main {
+div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,10 +32,13 @@ main {
 }
 
 @keyframes breathingColor {
+
   0%, 100% {
     filter: hue-rotate(0deg);
   }
+
   50% {
     filter: hue-rotate(30deg);
   }
+
 }
