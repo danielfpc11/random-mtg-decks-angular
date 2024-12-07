@@ -1,28 +1,28 @@
 <main>
   <section>
     <h1>
-      {{ GAME_ASSIGNMENT_FORM_CREATE_GAME | translate }}
+      {{ 'gameAssignment.form.createGame' | translate }}
     </h1>
     <form [formGroup]="playerForm" (ngSubmit)="addPlayer()">
       <div class="form-control">
         <label for="name">
-          {{ GAME_ASSIGNMENT_FORM_PLAYER_NAME | translate }}
+          {{ 'gameAssignment.form.playerName' | translate }}
         </label>
-        <input id="name" type="text" formControlName="name" maxlength="10" placeholder="{{ GAME_ASSIGNMENT_FORM_PLAYER_NAME_PLACEHOLDER | translate }}">
+        <input id="name" type="text" formControlName="name" maxlength="10" placeholder="{{ 'gameAssignment.form.playerNamePlaceholder' | translate }}">
       </div>
       <div class="button-container">
         <button type="submit" id="add-player-button">
-          {{ GAME_ASSIGNMENT_FORM_ADD | translate }}
+          {{ 'gameAssignment.form.add' | translate }}
         </button>
         <button [disabled]="game.players.length == 0" (click)="setDecks()" type="button" id="set-decks-button">
-          {{ GAME_ASSIGNMENT_FORM_SET_DECKS | translate }}
+          {{ 'gameAssignment.form.setDecks' | translate }}
         </button>
       </div>
     </form>
     <ng-container [ngTemplateOutlet]="formErrorMessages"/>
     <game-assignment-player-list [game]="game" [deleteButton]="true" (deletePlayerEventEmitter)="updateNameFormControlValidation()"/>
     <button [disabled]="!isValidGame()" type="button" (click)="saveGame()" id="save-game-button">
-      {{ GAME_ASSIGNMENT_FORM_SAVE_GAME | translate }}
+      {{ 'gameAssignment.form.saveGame' | translate }}
     </button>
   </section>
 </main>
@@ -30,13 +30,13 @@
 <ng-template #formErrorMessages>
   <div *ngIf="getNameFormControl()?.invalid && (getNameFormControl()?.dirty || getNameFormControl()?.touched)" id="form-error-messages">
     <p *ngIf="getNameFormControl()?.errors?.['repeatedPlayerName']">
-      * {{ GAME_ASSIGNMENT_FORM_ERROR_REPEATED_PLAYER_NAME | translate }}
+      * {{ 'gameAssignment.form.error.repeatedPlayerName' | translate }}
     </p>
     <p *ngIf="getNameFormControl()?.errors?.['playerLimitReached']">
-      * {{ GAME_ASSIGNMENT_FORM_ERROR_PLAYER_LIMIT_REACHED | translate }}
+      * {{ 'gameAssignment.form.error.playerLimitReached' | translate }}
     </p>
     <p *ngIf="getNameFormControl()?.errors?.['maxlength']">
-      * {{ GAME_ASSIGNMENT_FORM_ERROR_MAX_LENGTH_PLAYER_NAME | translate }}
+      * {{ 'gameAssignment.form.error.maxLengthPlayerName' | translate }}
     </p>
   </div>
 </ng-template>

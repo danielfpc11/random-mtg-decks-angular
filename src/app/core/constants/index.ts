@@ -1,2 +1,2 @@
-export * from './i18n.constants';
+export * from './languages.constants';
 export * from './routes.constants';

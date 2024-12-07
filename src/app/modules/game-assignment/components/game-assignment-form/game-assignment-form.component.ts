@@ -11,17 +11,7 @@ import {
   Deck,
   DeckConnector,
   Game,
-  GAME_ASSIGNMENT_FORM_ADD,
-  GAME_ASSIGNMENT_FORM_CREATE_GAME,
-  GAME_ASSIGNMENT_FORM_ERROR_MAX_LENGTH_PLAYER_NAME,
-  GAME_ASSIGNMENT_FORM_ERROR_PLAYER_LIMIT_REACHED,
-  GAME_ASSIGNMENT_FORM_ERROR_REPEATED_PLAYER_NAME,
-  GAME_ASSIGNMENT_FORM_PLAYER_NAME,
-  GAME_ASSIGNMENT_FORM_PLAYER_NAME_PLACEHOLDER,
-  GAME_ASSIGNMENT_FORM_SAVE_GAME,
-  GAME_ASSIGNMENT_FORM_SET_DECKS,
   GameConnector,
-  GLOBAL_ALERT_GAME_URL_COPIED,
   GlobalMessageService,
   SAVED_GAME_PAGE
 } from '../../../../core';
@@ -37,15 +27,6 @@ export class GameAssignmentFormComponent implements OnInit {
   protected game!: Game;
   protected playerForm!: FormGroup;
   protected subscription: Subscription = new Subscription();
-  protected readonly GAME_ASSIGNMENT_FORM_ADD = GAME_ASSIGNMENT_FORM_ADD;
-  protected readonly GAME_ASSIGNMENT_FORM_CREATE_GAME = GAME_ASSIGNMENT_FORM_CREATE_GAME;
-  protected readonly GAME_ASSIGNMENT_FORM_ERROR_REPEATED_PLAYER_NAME = GAME_ASSIGNMENT_FORM_ERROR_REPEATED_PLAYER_NAME;
-  protected readonly GAME_ASSIGNMENT_FORM_ERROR_PLAYER_LIMIT_REACHED = GAME_ASSIGNMENT_FORM_ERROR_PLAYER_LIMIT_REACHED;
-  protected readonly GAME_ASSIGNMENT_FORM_ERROR_MAX_LENGTH_PLAYER_NAME = GAME_ASSIGNMENT_FORM_ERROR_MAX_LENGTH_PLAYER_NAME;
-  protected readonly GAME_ASSIGNMENT_FORM_PLAYER_NAME = GAME_ASSIGNMENT_FORM_PLAYER_NAME;
-  protected readonly GAME_ASSIGNMENT_FORM_PLAYER_NAME_PLACEHOLDER = GAME_ASSIGNMENT_FORM_PLAYER_NAME_PLACEHOLDER;
-  protected readonly GAME_ASSIGNMENT_FORM_SAVE_GAME = GAME_ASSIGNMENT_FORM_SAVE_GAME;
-  protected readonly GAME_ASSIGNMENT_FORM_SET_DECKS = GAME_ASSIGNMENT_FORM_SET_DECKS;
 
   constructor(protected deckConnector: DeckConnector,
               protected gameConnector: GameConnector,
@@ -97,7 +78,7 @@ export class GameAssignmentFormComponent implements OnInit {
                                   switchMap((savedGameUrlTree: UrlTree) => this.copyAndNavigateUrlObservable(savedGameUrlTree)),
                                   tap(() => this.globalMessageService.sendMessage({
                                     alertType: AlertType.SUCCESS,
-                                    message: GLOBAL_ALERT_GAME_URL_COPIED,
+                                    message: 'global.globalMessage.gameUrlCopied',
                                     timeout: 5
                                   }))
                                 )
