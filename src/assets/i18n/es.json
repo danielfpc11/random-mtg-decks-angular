@@ -6,7 +6,11 @@
       "password": "Contraseña",
       "passwordPlaceholder": "Introduzca contraseña",
       "login": "Iniciar sesión",
-      "register": "Registro"
+      "register": "Registro",
+      "error": {
+        "usernameRequired": "Nombre de usuario es un campo requerido.",
+        "passwordRequired": "Contraseña es un campo requerido."
+      }
     }
   },
   "gameAssignment": {

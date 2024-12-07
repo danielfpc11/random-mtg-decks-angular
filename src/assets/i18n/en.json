@@ -6,7 +6,11 @@
       "password": "Password",
       "passwordPlaceholder": "Enter password",
       "login": "Login",
-      "register": "Register"
+      "register": "Register",
+      "error": {
+        "usernameRequired": "Username is a required field.",
+        "passwordRequired": "Password is a required field."
+      }
     }
   },
   "gameAssignment": {

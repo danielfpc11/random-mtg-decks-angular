@@ -11,7 +11,19 @@
     </label>
     <input id="password" type="password" formControlName="password" placeholder="{{ 'authentication.form.passwordPlaceholder' | translate }}">
   </div>
+  <ng-container *ngTemplateOutlet="formErrorMessages"></ng-container>
   <button type="submit">
     {{ 'authentication.form.login' | translate }}
   </button>
 </form>
+
+<ng-template #formErrorMessages>
+  <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)" id="form-error-messages">
+    <p *ngIf="getUsernameFormControl()?.hasError('required')">
+      * {{ 'authentication.form.error.usernameRequired' | translate }}
+    </p>
+    <p *ngIf="getPasswordFormControl()?.hasError('required')">
+      * {{ 'authentication.form.error.passwordRequired' | translate }}
+    </p>
+  </div>
+</ng-template>
