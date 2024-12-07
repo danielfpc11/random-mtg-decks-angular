@@ -1,13 +1,11 @@
-<main>
-  <section>
-    <ng-container *ngIf="game$ | async; let game">
-      <h1>
-        {{ 'gameAssignment.savedGame.game' | translate: {gameId: game.id} }}
-      </h1>
-      <p>
-        {{ DateUtils.formatDate(game.date) }}
-      </p>
-      <game-assignment-player-list [game]="game" [deleteButton]="false"/>
-    </ng-container>
-  </section>
-</main>
+<ng-container *ngIf="game$ | async; let game">
+  <div>
+    <h1>
+      {{ 'gameAssignment.savedGame.game' | translate: {gameId: game.id} }}
+    </h1>
+    <p>
+      {{ DateUtils.formatDate(game.date) }}
+    </p>
+    <game-assignment-player-list [game]="game" [deleteButton]="false"/>
+  </div>
+</ng-container>
