@@ -13,6 +13,14 @@ h1 {
   font-size: 4rem;
 }
 
+button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
 button:disabled {
   cursor: not-allowed !important;
   background-color: #efefef4c !important;

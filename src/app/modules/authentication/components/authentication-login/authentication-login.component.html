@@ -3,13 +3,13 @@
     <label>
       {{ 'authentication.form.username' | translate }}
     </label>
-    <input id="username" type="text" formControlName="username">
+    <input id="username" type="text" formControlName="username" placeholder="{{ 'authentication.form.usernamePlaceholder' | translate }}">
   </div>
   <div class="form-control">
     <label>
       {{ 'authentication.form.password' | translate }}
     </label>
-    <input id="password" type="password" formControlName="password">
+    <input id="password" type="password" formControlName="password" placeholder="{{ 'authentication.form.passwordPlaceholder' | translate }}">
   </div>
   <button type="submit">
     {{ 'authentication.form.login' | translate }}

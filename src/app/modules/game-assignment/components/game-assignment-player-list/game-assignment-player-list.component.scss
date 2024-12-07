@@ -48,11 +48,9 @@
 }
 
 .player-name > button {
+  padding: 0;
   position: absolute;
-  border: none;
   background-color: transparent;
-  cursor: pointer;
-  font-size: 1.25rem;
 }
 
 @media (max-width: 1000px) {
