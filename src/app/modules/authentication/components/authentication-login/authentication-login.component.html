@@ -1,19 +1,17 @@
-<main>
-  <form [formGroup]="userForm" (ngSubmit)="login()">
-    <div class="form-control">
-      <label>
-        {{ 'authentication.form.username' | translate }}
-      </label>
-      <input id="username" type="text" formControlName="username">
-    </div>
-    <div class="form-control">
-      <label>
-        {{ 'authentication.form.password' | translate }}
-      </label>
-      <input id="password" type="password" formControlName="password">
-    </div>
-    <button type="submit">
-      {{ 'authentication.form.login' | translate }}
-    </button>
-  </form>
-</main>
+<form [formGroup]="userForm" (ngSubmit)="login()">
+  <div class="form-control">
+    <label>
+      {{ 'authentication.form.username' | translate }}
+    </label>
+    <input id="username" type="text" formControlName="username">
+  </div>
+  <div class="form-control">
+    <label>
+      {{ 'authentication.form.password' | translate }}
+    </label>
+    <input id="password" type="password" formControlName="password">
+  </div>
+  <button type="submit">
+    {{ 'authentication.form.login' | translate }}
+  </button>
+</form>
