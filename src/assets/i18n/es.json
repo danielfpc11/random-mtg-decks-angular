@@ -2,7 +2,9 @@
   "authentication": {
     "form": {
       "username": "Nombre de usuario",
+      "usernamePlaceholder": "Introduzca nombre de usuario",
       "password": "Contraseña",
+      "passwordPlaceholder": "Introduzca contraseña",
       "login": "Iniciar sesión",
       "register": "Registro"
     }
