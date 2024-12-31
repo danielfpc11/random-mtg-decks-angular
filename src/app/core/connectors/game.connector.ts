@@ -13,7 +13,7 @@ export class GameConnector {
               protected errorHandlerService: ErrorHandlerService) {
   }
 
-  findAllGames(): Observable<Game[]> {
+  public findAllGames(): Observable<Game[]> {
     return this.gameService
                .findAll()
                .pipe(
@@ -22,7 +22,7 @@ export class GameConnector {
                );
   }
 
-  findGameById(id: number): Observable<Game> {
+  public findGameById(id: number): Observable<Game> {
     return this.gameService
                .findById(id)
                .pipe(
@@ -31,7 +31,7 @@ export class GameConnector {
                );
   }
 
-  saveNewGame(game: Game): Observable<number> {
+  public saveNewGame(game: Game): Observable<number> {
     return this.gameService
                .saveNew(GameAdapter.adaptRequestBody(game))
                .pipe(
@@ -39,7 +39,7 @@ export class GameConnector {
                );
   }
 
-  saveUpdateGame(id: number, game: Game): Observable<number> {
+  public saveUpdateGame(id: number, game: Game): Observable<number> {
     return this.gameService
                .saveUpdate(id, GameAdapter.adaptRequestBody(game))
                .pipe(
@@ -47,7 +47,7 @@ export class GameConnector {
                );
   }
 
-  deleteGameById(id: number): Observable<number> {
+  public deleteGameById(id: number): Observable<number> {
     return this.gameService
                .deleteById(id)
                .pipe(

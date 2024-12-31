@@ -13,7 +13,7 @@ export class DeckConnector {
               protected errorHandlerService: ErrorHandlerService) {
   }
 
-  findAllDecks(): Observable<Deck[]> {
+  public findAllDecks(): Observable<Deck[]> {
     return this.deckService
                .findAll()
                .pipe(
@@ -22,7 +22,7 @@ export class DeckConnector {
                );
   }
 
-  findRandomDecks(quantity: number): Observable<Deck[]> {
+  public findRandomDecks(quantity: number): Observable<Deck[]> {
     return this.deckService
                .findRandomDecks(quantity)
                .pipe(
@@ -31,7 +31,7 @@ export class DeckConnector {
                );
   }
 
-  findDeckById(id: number): Observable<Deck> {
+  public findDeckById(id: number): Observable<Deck> {
     return this.deckService
                .findById(id)
                .pipe(
@@ -40,7 +40,7 @@ export class DeckConnector {
                );
   }
 
-  saveNewDeck(deck: Deck): Observable<number> {
+  public saveNewDeck(deck: Deck): Observable<number> {
     return this.deckService
                .saveNew(DeckAdapter.adaptRequestBody(deck))
                .pipe(
@@ -48,7 +48,7 @@ export class DeckConnector {
                );
   }
 
-  saveUpdateDeck(id: number, deck: Deck): Observable<number> {
+  public saveUpdateDeck(id: number, deck: Deck): Observable<number> {
     return this.deckService
                .saveUpdate(id, DeckAdapter.adaptRequestBody(deck))
                .pipe(
@@ -56,7 +56,7 @@ export class DeckConnector {
                );
   }
 
-  deleteDeckById(id: number): Observable<number> {
+  public deleteDeckById(id: number): Observable<number> {
     return this.deckService
                .deleteById(id)
                .pipe(

@@ -13,7 +13,7 @@ export class PlayerConnector {
               protected errorHandlerService: ErrorHandlerService) {
   }
 
-  findAllPlayers(): Observable<Player[]> {
+  public findAllPlayers(): Observable<Player[]> {
     return this.playerService
                .findAll()
                .pipe(
@@ -22,7 +22,7 @@ export class PlayerConnector {
                );
   }
 
-  findPlayerById(id: number): Observable<Player> {
+  public findPlayerById(id: number): Observable<Player> {
     return this.playerService
                .findById(id)
                .pipe(
@@ -31,7 +31,7 @@ export class PlayerConnector {
                );
   }
 
-  saveNewPlayer(player: Player): Observable<number> {
+  public saveNewPlayer(player: Player): Observable<number> {
     return this.playerService
                .saveNew(PlayerAdapter.adaptRequestBody(player))
                .pipe(
@@ -39,7 +39,7 @@ export class PlayerConnector {
                );
   }
 
-  saveUpdatePlayer(id: number, player: Player): Observable<number> {
+  public saveUpdatePlayer(id: number, player: Player): Observable<number> {
     return this.playerService
                .saveUpdate(id, PlayerAdapter.adaptRequestBody(player))
                .pipe(
@@ -47,7 +47,7 @@ export class PlayerConnector {
                );
   }
 
-  deletePlayerById(id: number): Observable<number> {
+  public deletePlayerById(id: number): Observable<number> {
     return this.playerService
                .deleteById(id)
                .pipe(
