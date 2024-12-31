@@ -10,10 +10,14 @@ import {
   DefaultGameService,
   DefaultGlobalMessageService,
   DefaultPlayerService,
+  DefaultRoleService,
+  DefaultUserService,
   ErrorHandlerService,
   GameService,
   GlobalMessageService,
-  PlayerService
+  PlayerService,
+  RoleService,
+  UserService
 } from './services';
 
 @NgModule({
@@ -24,7 +28,9 @@ import {
     {provide: GlobalMessageService, useClass: DefaultGlobalMessageService},
     {provide: DeckService, useClass: DefaultDeckService},
     {provide: GameService, useClass: DefaultGameService},
-    {provide: PlayerService, useClass: DefaultPlayerService}
+    {provide: PlayerService, useClass: DefaultPlayerService},
+    {provide: RoleService, useClass: DefaultRoleService},
+    {provide: UserService, useClass: DefaultUserService}
   ]
 })
 export class CoreModule {

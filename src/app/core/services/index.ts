@@ -5,3 +5,5 @@ export * from './error-handler';
 export * from './game';
 export * from './global-message';
 export * from './player';
+export * from './role';
+export * from './user';
