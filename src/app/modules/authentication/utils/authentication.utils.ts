@@ -1,6 +1,6 @@
 import {
-  AUTHENTICATION_LOGIN,
-  AUTHENTICATION_REGISTER,
+  AUTHENTICATION_LOGIN_ENDPOINT,
+  AUTHENTICATION_REGISTER_ENDPOINT,
   DECK_DELETE_ENDPOINT,
   DECK_FIND_ALL_ENDPOINT,
   DECK_FIND_BY_ID_ENDPOINT,
@@ -34,7 +34,7 @@ export class AuthenticationUtils {
 
   public static adminEndpoints(): string[] {
     return [
-      AUTHENTICATION_REGISTER,
+      AUTHENTICATION_REGISTER_ENDPOINT,
       DECK_DELETE_ENDPOINT,
       DECK_NEW_ENDPOINT,
       DECK_UPDATE_ENDPOINT,
@@ -59,7 +59,7 @@ export class AuthenticationUtils {
 
   public static permittedEndpoints(): string[] {
     return [
-      AUTHENTICATION_LOGIN,
+      AUTHENTICATION_LOGIN_ENDPOINT,
       DECK_FIND_ALL_ENDPOINT,
       DECK_FIND_BY_ID_ENDPOINT,
       DECK_FIND_RANDOM_ENDPOINT,
